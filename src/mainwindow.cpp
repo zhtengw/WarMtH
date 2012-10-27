@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addLayout(rightLayout);
     setLayout(mainLayout);
 
-    setWindowTitle(tr("MentoHust"));
+    setWindowTitle(tr("WarMtH"));
     setFixedHeight(sizeHint().height());
 
 }

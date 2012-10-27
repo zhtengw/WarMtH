@@ -17,6 +17,7 @@
  *  along with WarMtH.  If not, see <http://www.gnu.org/licenses/>.    *
  ***************************************************************************/
 #include <QApplication>
+#include <QTranslator>
 
 #include "mainwindow.h"
 
@@ -24,6 +25,9 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/warmth.png"));
+    QTranslator qtTranslator;
+    qtTranslator.load("/usr/share/warmth/l10n/zh-CN.qm");
+    app.installTranslator(&qtTranslator);
     QCoreApplication::setOrganizationName("WarMtH");
     QCoreApplication::setApplicationName("warmth");
     MainWindow *mainWD = new MainWindow;

@@ -22,14 +22,31 @@ SOURCES += src/configwindow.cpp src/main.cpp src/mainwindow.cpp src/authmsgwindo
 RESOURCES += \
     images/images.qrc
 
-
+TRANSLATIONS += \
+    l10n/en.ts  \
+    l10n/zh-CN.ts
 OTHER_FILES += \
     README \
     COPYING \
     AUTHORS \
     TODO
 
+icon.files = images/warmth.png
+desktop.files = src/warmth.desktop
+other.files +=  \
+        l10n    \
+        README  \
+        COPYING \
+        AUTHORS \
+        warmth.slackbuild
 unix {
+    icon.path = /usr/share/icons/hicolor/128x128/apps/
+    desktop.path = /usr/share/applications/
+    other.path = /usr/share/warmth
     target.path = /usr/bin
-    INSTALLS += target
+    INSTALLS += \
+        target  \
+        icon    \
+        desktop \
+        other
 }

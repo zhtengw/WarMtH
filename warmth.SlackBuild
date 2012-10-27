@@ -44,9 +44,9 @@
 
 # Set initial variables:
 
-PKGNAM=mentohust
+PKGNAM=warmth
 #VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
-VERSION=${VERSION:-0.3.1}
+VERSION=${VERSION:-1.0}
 BUILD=${BUILD:-4}
 NUMJOBS=${NUMJOBS:" -j4 "}
 TAG=${TAG:-_aten}
@@ -55,6 +55,7 @@ TAG=${TAG:-_aten}
 SRCDIR=${SRCDIR:-$(cd $(dirname $0); pwd)}
 
 # Place to build (TMP) package (PKG) and output (OUTPUT) the program:
+CWD=$(pwd)
 TMP=${TMP:-/tmp/build}
 PKG=$TMP/package-$PKGNAM
 OUTPUT=${OUTPUT:-/tmp}
@@ -106,8 +107,8 @@ echo "|| $PKGNAM-$VERSION"
 echo "++"
 
 # Get the source code from svn
-svn checkout http://mentohust.googlecode.com/svn/trunk/ $TMP/tmp-$PKGNAM
-
+#svn checkout http://mentohust.googlecode.com/svn/trunk/ $TMP/tmp-$PKGNAM
+cp -r $CWD/* $TMP/tmp-$PKGNAM
 cd $TMP/tmp-$PKGNAM
 
 # patch to disable fully buffered (need line buffered to show message on gui)
@@ -117,6 +118,7 @@ patch -Np0 -i ${CWD}/mentohust-linebuf.patch
 chown -R root:root .
 chmod -R u+w,go+r-w,a+X-s .
 
+cd mentohust
 sh autogen.sh
 
 ./configure \
@@ -127,6 +129,11 @@ sh autogen.sh
 
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG || exit 1
+
+cd ../
+qmake WarMtH.pro
+make
+make install INSTALL_ROOT=$PKG
 
 chmod 4755 $PKG/usr/bin/mentohust
 mv $PKG/etc/mentohust.conf $PKG/etc/mentohust.conf.new

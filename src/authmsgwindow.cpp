@@ -170,7 +170,7 @@ void AuthMsgWindow::showMessage()
     QStringList allMessage=QString(authMsg->toPlainText()).split("\n",QString::SkipEmptyParts);
     QStringList tempmsg = QStringList() << allMessage.at(allMessage.size()-2) << allMessage.last();
     QString message = tempmsg.join("\n");
-    sysTrayIcon->showMessage(tr("MentoHust"), message,QSystemTrayIcon::Information,5000);
+    sysTrayIcon->showMessage(tr("WarMtH"), message,QSystemTrayIcon::Information,5000);
 }
 
 void AuthMsgWindow::trayActions()
