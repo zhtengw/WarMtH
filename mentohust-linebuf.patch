@@ -1,0 +1,11 @@
+--- mentohust/src/mentohust.c~	2012-10-15 09:20:54.000000000 +0800
++++ mentohust/src/mentohust.c	2012-10-19 13:10:53.000000000 +0800
+@@ -49,6 +49,8 @@
+ 	textdomain(GETTEXT_PACKAGE);
+ 	setlocale(LC_ALL, "");
+ #endif
++	setvbuf(stdout,(char *)NULL, _IONBF, 0);
++
+ 	atexit(exit_handle);
+ 	initConfig(argc, argv);
+ 	signal(SIGALRM, sig_handle);	/* 定时器 */
