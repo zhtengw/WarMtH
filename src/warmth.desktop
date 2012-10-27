@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=WarMtH
+Exec=warmth
+Terminal=false
+Type=Application
+Icon=warmth
+Categories=Network;Qt;
+commment=A GUI front-end of MentoHust
+commment[zh_CN]=MentoHust的图形前端
