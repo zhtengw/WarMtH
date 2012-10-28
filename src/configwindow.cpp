@@ -25,8 +25,8 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     // settings
     QSettings setting("WarMtH","warmth");
 
-    //Widgets on configuration window
-    // 1. Confirm and Exit buttons
+    ////**Widgets on configuration window**////
+    /* 1. Confirm and Exit buttons */
     confirmButton = new QPushButton(tr("Confir&m"));
     cancelButton = new QPushButton(tr("Canc&el"));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelClicked()));
@@ -36,7 +36,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     buttonLayout->addWidget(confirmButton);
     buttonLayout->addWidget(cancelButton);
 
-    // 2. Net cards selection
+    /* 2. Net cards selection */
     CVNetCard = new QString;
     netCardName = new QLabel(tr("Netcard:"));
     netCardSelect = new QComboBox;
@@ -65,7 +65,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     connect(netCardSelect,SIGNAL(currentIndexChanged(QString)), this, SLOT(saveNetCard(QString)));
 
 
-    // 3. Mulcast address selection
+    /* 3. Mulcast address selection */
     //CVMulAdr=0;
     mulCastAdrName = new QLabel(tr("Mulcast Address:"));
     mulCastAdrName->setToolTip(tr("Mulcast Address"));
@@ -84,7 +84,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     CVMulAdr = setting.value("mulcastaddress",0).toInt();
     connect(mulCastAdr,SIGNAL(currentIndexChanged(int)), this, SLOT(saveMulAdr(int)));
 
-    // 4. time to display notification
+    /* 4. time to display notification */
     CVDispNotif = new QString;
     dispNotif = new QLabel(tr("Display Notification:"));
     dispNotif->setToolTip(tr("Seconds to display system notification, letters to no show."));
@@ -103,12 +103,13 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     //set layout
     QHBoxLayout *dispNotifLayout = new QHBoxLayout;
     dispNotifLayout->addWidget(dispNotif);
+    dispNotifLayout->addStretch();
     dispNotifLayout->addWidget(dispNotifTime);
     dispNotifLayout->addWidget(unitdis);
 
     connect(dispNotifTime,SIGNAL(textChanged(QString)), this, SLOT(saveDispNotif(QString)));
 
-    // 5. DHCP type
+    /* 5. DHCP type */
     //CVDhcpType=0;
     dhcpTypeName = new QLabel(tr("DHCP type:"));
     dhcpTypeName->setToolTip(tr("Set the type of DHCP."));
@@ -127,7 +128,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     CVDhcpType = setting.value("dhcptype",0).toInt();
     connect(dhcpType,SIGNAL(currentIndexChanged(int)), this, SLOT(saveDhcpType(int)));
 
-    // 6. authenticate timeout
+    /* 6. authenticate timeout */
     CVAuthTO = new QString;
     authTimeOutName= new QLabel(tr("Authenticate timeout:"));
     authTimeOutName->setToolTip(tr("Seconds to wait for authentication."));
@@ -151,7 +152,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     connect(authTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveAuthTimeOut(QString)));
 
-    // 7. max failure times
+    /* 7. max failure times */
     CVMaxFT = new QString;
     maxFailTimesName= new QLabel(tr("Max failure times:"));
     maxFailTimesName->setToolTip(tr("Times limit for failure[0 means no limit]."));
@@ -172,7 +173,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     maxFailTimesLayout->addStretch();
     maxFailTimesLayout->addWidget(maxFailTimes);
 
-    // 8. wait on failure timeout
+    /* 8. wait on failure timeout */
     CVWaitFTO = new QString;
     waitFailTimeOutName= new QLabel(tr("Wait on failure timeout:"));
     waitFailTimeOutName->setToolTip(tr("Seconds to wait on failure."));
@@ -196,7 +197,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     connect(waitFailTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveWaitFailTimeOut(QString)));
 
-    // 9. heartbeat timeout
+    /* 9. heartbeat timeout */
     CVHeatBTO = new QString;
     heartbeatTimeOutName= new QLabel(tr("Heartbeat timeout:"));
     heartbeatTimeOutName->setToolTip(tr("Interval between sending two heartbeat packages."));
@@ -220,7 +221,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     connect(waitFailTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveHeartbeatTimeOut(QString)));
 
-    // 10. imitated client version
+    /* 10. imitated client version */
     CVClientVer= new QString;
     clientVersionName= new QLabel(tr("Client Version:"));
     clientVersionName->setToolTip(tr("The version of authentification client to imitate[default to 0.00, compatible with xrgsu]."));
@@ -243,7 +244,13 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     connect(clientVersion,SIGNAL(textChanged(QString)), this, SLOT(saveClientVersion(QString)));
 
-    // set the whole layout of configure window
+    /* 11. auto show system tray message */
+    autoTrayMsg = new QCheckBox(tr("Show balloon message on system tray"));
+    autoTrayMsg->setChecked(setting.value("traymsg",1).toInt()==1);
+    CVTrayMsg=setting.value("traymsg",1).toInt();
+    connect(autoTrayMsg,SIGNAL(clicked()),this,SLOT(saveTrayMsg()));
+
+    ////** set the whole layout of configure window **////
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addLayout(clientVersionLayout);
     mainLayout->addLayout(heartbeatTimeOutLayout);
@@ -254,6 +261,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     mainLayout->addLayout(dispNotifLayout);
     mainLayout->addLayout(mulCastLayout);
     mainLayout->addLayout(netCardLayout);
+    mainLayout->addWidget(autoTrayMsg);
     mainLayout->addLayout(buttonLayout);
 
     setLayout(mainLayout);
@@ -311,6 +319,8 @@ void ConfigWindow::confirmClicked()
 
     *clientVersionArg=QStringList()<<"-v"<<*CVClientVer;
     setting.setValue("clientversion",*CVClientVer);
+
+    setting.setValue("traymsg",CVTrayMsg);
 
     close();
 }
@@ -371,6 +381,11 @@ void ConfigWindow::saveHeartbeatTimeOut(const QString time)
 void ConfigWindow::saveClientVersion(const QString version)
 {
     *CVClientVer = version;
+}
+
+void ConfigWindow::saveTrayMsg()
+{
+    autoTrayMsg->isChecked()?CVTrayMsg=1:CVTrayMsg=0;
 }
 
 void ConfigWindow::setArgs()

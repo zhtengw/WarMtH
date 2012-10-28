@@ -71,7 +71,7 @@ private:
     QAction *exitAction;
     QAction *restoreAction;
     QAction *quitAction;
-    //QIcon *icon;
+    bool    trayMsg;
 };
 
 #endif // AUTHMSGWINDOW_H

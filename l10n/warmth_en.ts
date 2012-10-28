@@ -5,19 +5,19 @@
     <name>AuthMsgWindow</name>
     <message>
         <location filename="../src/authmsgwindow.cpp" line="31"/>
-        <location filename="../src/authmsgwindow.cpp" line="182"/>
+        <location filename="../src/authmsgwindow.cpp" line="187"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/authmsgwindow.cpp" line="32"/>
-        <location filename="../src/authmsgwindow.cpp" line="178"/>
+        <location filename="../src/authmsgwindow.cpp" line="183"/>
         <source>&amp;Minimize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/authmsgwindow.cpp" line="33"/>
-        <source>&amp;Re-authenticate</source>
+        <source>Re-&amp;authenticate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -26,17 +26,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="173"/>
+        <location filename="../src/authmsgwindow.cpp" line="178"/>
         <source>WarMtH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="185"/>
+        <location filename="../src/authmsgwindow.cpp" line="190"/>
         <source>&amp;Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="189"/>
+        <location filename="../src/authmsgwindow.cpp" line="194"/>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -104,104 +104,109 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="113"/>
+        <location filename="../src/configwindow.cpp" line="114"/>
         <source>DHCP type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="114"/>
+        <location filename="../src/configwindow.cpp" line="115"/>
         <source>Set the type of DHCP.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="118"/>
+        <location filename="../src/configwindow.cpp" line="119"/>
         <source>not in used</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="118"/>
+        <location filename="../src/configwindow.cpp" line="119"/>
         <source>secondary authenticate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="118"/>
+        <location filename="../src/configwindow.cpp" line="119"/>
         <source>post authenticate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="118"/>
+        <location filename="../src/configwindow.cpp" line="119"/>
         <source>pre authenticate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="132"/>
+        <location filename="../src/configwindow.cpp" line="133"/>
         <source>Authenticate timeout:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="133"/>
+        <location filename="../src/configwindow.cpp" line="134"/>
         <source>Seconds to wait for authentication.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="136"/>
-        <location filename="../src/configwindow.cpp" line="181"/>
-        <location filename="../src/configwindow.cpp" line="205"/>
+        <location filename="../src/configwindow.cpp" line="137"/>
+        <location filename="../src/configwindow.cpp" line="182"/>
+        <location filename="../src/configwindow.cpp" line="206"/>
         <source>s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="156"/>
+        <location filename="../src/configwindow.cpp" line="157"/>
         <source>Max failure times:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="157"/>
+        <location filename="../src/configwindow.cpp" line="158"/>
         <source>Times limit for failure[0 means no limit].</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="177"/>
+        <location filename="../src/configwindow.cpp" line="178"/>
         <source>Wait on failure timeout:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="178"/>
+        <location filename="../src/configwindow.cpp" line="179"/>
         <source>Seconds to wait on failure.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="201"/>
+        <location filename="../src/configwindow.cpp" line="202"/>
         <source>Heartbeat timeout:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="202"/>
+        <location filename="../src/configwindow.cpp" line="203"/>
         <source>Interval between sending two heartbeat packages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="225"/>
+        <location filename="../src/configwindow.cpp" line="226"/>
         <source>Client Version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="226"/>
+        <location filename="../src/configwindow.cpp" line="227"/>
         <source>The version of authentification client to imitate[default to 0.00, compatible with xrgsu].</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="261"/>
+        <location filename="../src/configwindow.cpp" line="248"/>
+        <source>Show balloon message on system tray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="269"/>
         <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="343"/>
+        <location filename="../src/configwindow.cpp" line="353"/>
         <source>Out of Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="343"/>
+        <location filename="../src/configwindow.cpp" line="353"/>
         <source>The second value should be 0-20.</source>
         <translation type="unfinished"></translation>
     </message>

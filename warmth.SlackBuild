@@ -25,17 +25,13 @@
 # Slackware SlackBuild script 
 # ===========================
 # By:          Aten Zhang <atenzd@gmail.com>
-# For:         mentohust
-# Descr:       a Ruijie authentication program
+# For:         WarMtH
+# Descr:       a GUI front end of MentoHUST
 # URL:         http://code.google.com/p/mentohust/ 
 # Needs:       
 # Changelog:   
-# 0.3.1-2:     11/Sep/2012 by Aten Zhang <atenzd@gmail.com>
+# 1.0-1:       11/Sep/2012 by Aten Zhang <atenzd@gmail.com>
 #              * Initial build.
-# 0.3.1-3:     11/Sep/2012 by Aten Zhang <atenzd@gmail.com>
-#              * Rebuild from svn.
-# 0.3.1-4:     19/Oct/2012 by Aten Zhang <atenzd@gmail.com>
-#	       * Rebuild, patch to disable fully buffered.
 # Run 'sh mentohust.SlackBuild' to build a Slackware package.
 # The package (.tgz) and .txt file as well as build logs are created in /tmp .
 # Install it using 'installpkg'. 
@@ -47,7 +43,7 @@
 PKGNAM=warmth
 #VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 VERSION=${VERSION:-1.0}
-BUILD=${BUILD:-4}
+BUILD=${BUILD:-1}
 NUMJOBS=${NUMJOBS:" -j4 "}
 TAG=${TAG:-_aten}
 
@@ -131,6 +127,7 @@ make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG || exit 1
 
 cd ../
+lrelease l10n/*.ts
 qmake WarMtH.pro
 make
 make install INSTALL_ROOT=$PKG
@@ -168,16 +165,16 @@ cat > $PKG/install/slack-desc <<EOF
 # leave one space after the ':'.
 
 $blank|-----handy-ruler-----------------------------------------------------|
-$PKGNAM: MentoHUST (a Ruijie authentication program supported Mac and Linux)
+$PKGNAM: WarMtH (a GUI front end of MentoHUST)
+$PKGNAM:
+$PKGNAM: WarMtH works around MentoHUST.
 $PKGNAM:
 $PKGNAM: MentoHUST is a third-party client using Ruijie authentication. 
 $PKGNAM: It runs well on Linux, Mac and Windows.It supports the checking 
 $PKGNAM: algorithm of Ruijie client.It can simulatenearly all vertions  
 $PKGNAM: of Ruijie and supports multi-netcard.  
 $PKGNAM:
-$PKGNAM:
-$PKGNAM:
-$PKGNAM: HomePage:http://code.google.com/p/mentohust/
+$PKGNAM: HomePage:https://gitcafe.com/zhtengw/WarMtH
 $PKGNAM:
 EOF
 

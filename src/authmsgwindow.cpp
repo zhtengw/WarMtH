@@ -30,7 +30,7 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
 {
     exitButton = new QPushButton(tr("&Exit"));
     miniButton = new QPushButton(tr("&Minimize"));
-    reauthButton = new QPushButton(tr("&Re-authenticate"));
+    reauthButton = new QPushButton(tr("Re-&authenticate"));
     authMsg = new QTextEdit;
     args = new QStringList;
     sysTrayIcon = new QSystemTrayIcon(QIcon(":/warmth.png"));
@@ -96,6 +96,8 @@ void AuthMsgWindow::readresult()
     QTextCodec *data = QTextCodec::codecForName("UTF-8");
     QString result = data->toUnicode(backend->readAllStandardOutput());
     authMsg->append(result);
+    if(this->isHidden()&&trayMsg)showMessage();
+
 }
 
 void AuthMsgWindow::setArgs(const QString &id, const QString &pd)
@@ -122,10 +124,8 @@ void AuthMsgWindow::miniClicked()
 {
     if (sysTrayIcon->isSystemTrayAvailable())
     {
-        if(sysTrayIcon->supportsMessages())
+        if(sysTrayIcon->supportsMessages()&&trayMsg)
         {
-            //get last line of authMsg
-            //authMsg->
             showMessage();
         }
         this->hide();
@@ -167,10 +167,15 @@ void AuthMsgWindow::trayIconAct(QSystemTrayIcon::ActivationReason reason)
 
 void AuthMsgWindow::showMessage()
 {
+    //show last two lines of the message output
+    /*get the message from authMsg and split them by "return",
+    so that every element of the allMessage QStringList is one
+    line of all message output. And the elements are enumerated
+    from 0.*/
     QStringList allMessage=QString(authMsg->toPlainText()).split("\n",QString::SkipEmptyParts);
     QStringList tempmsg = QStringList() << allMessage.at(allMessage.size()-2) << allMessage.last();
     QString message = tempmsg.join("\n");
-    sysTrayIcon->showMessage(tr("WarMtH"), message,QSystemTrayIcon::Information,5000);
+    sysTrayIcon->showMessage(tr("WarMtH"), message,QSystemTrayIcon::Information,2000);
 }
 
 void AuthMsgWindow::trayActions()

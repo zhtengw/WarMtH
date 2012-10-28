@@ -117,15 +117,18 @@ void MainWindow::authClicked()
     QString temppd = pdEdit->text();
     if(rembCheckBox->isChecked()){saveID(2);}
 
+    if (QSystemTrayIcon::isSystemTrayAvailable())
+    {
+        authMW->sysTrayIcon->show();
+    }
+
+    authMW->trayMsg = confW->autoTrayMsg->isChecked();
     authMW->setArgs(tempid, temppd);
     confW->setArgs();
     *authMW->args=*authMW->args<<*confW->args;
     *authMW->backendName=QString("mentohust");
     authMW->backend->start(*authMW->backendName, *authMW->args);
-    if (QSystemTrayIcon::isSystemTrayAvailable())
-    {
-        authMW->sysTrayIcon->show();
-    }
+
     authMW->show();
 
 }

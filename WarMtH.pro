@@ -23,8 +23,8 @@ RESOURCES += \
     images/images.qrc
 
 TRANSLATIONS += \
-    l10n/en.ts  \
-    l10n/zh-CN.ts
+    l10n/warmth_en.ts  \
+    l10n/warmth_zh_CN.ts
 OTHER_FILES += \
     README \
     COPYING \

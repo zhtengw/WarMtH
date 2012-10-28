@@ -28,16 +28,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QLayout>
-
-/*class QPushButton;
-class QTextEdit;
-class QProcess;
-class QComboBox;
-class QLabel;
-class QButtonGroup;
-class QCheckBox;
-class QString;
-class QLineEdit;*/
+#include <QCheckBox>
 
 class ConfigWindow : public QDialog
 {
@@ -60,6 +51,7 @@ private slots:
     void saveWaitFailTimeOut(const QString time);
     void saveHeartbeatTimeOut(const QString time);
     void saveClientVersion(const QString version);
+    void saveTrayMsg();
 
 private:
     void setArgs();
@@ -113,6 +105,9 @@ private:
     QLineEdit *clientVersion;
     QStringList *clientVersionArg;
     QString *CVClientVer;       // save current value of imitated client version
+
+    QCheckBox *autoTrayMsg;
+    int CVTrayMsg;              // save current state of the checkbox
 };
 
 #endif // CONFIGWINDOW_H
