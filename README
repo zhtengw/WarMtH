@@ -1,5 +1,37 @@
-WarMtH
+1. 概览  
+  WarMtH
     Yes, It's a GUI frontend of MentoHust. It must Work around MentoHust. And I do this work
   just because of my passion to Linux. I write this program, and it may feel the warmth of
   mine. Then it's why I name it WarMtH.
 
+2. 文件说明
+--./
+ |--WarMtH.pro			qmake工程文件
+ |--INSTALL			安装说明
+ |--DEBIAN/			打包deb包所用
+ |--deb-warmth.sh		用于.deb打包的脚本
+ |--warmth.SlackBuild		用于Slackware .tgz包的打包脚本
+ |--mentohust/			从svn拷贝的MentoHust源代码
+ |--mentohust-linebuf.patch	禁用mentohust全缓冲的patch
+ |--src/			warmth源码目录
+   |--main.cpp			主函数
+   |--mainwindow.h		MainWindow类的头文件
+   |--mainwindow.cpp		MainWindow类的实现文件，创建程序的主窗口
+   |--configwindow.h		ConfigWindow类的头文件
+   |--configwindow.cpp		ConfigWindow类的实现文件，创建程序的配置对话框
+   |--authmsgwindow.h		AuthMsgWindow类的头文件
+   |--authmsgwindow.cpp		AuthMsgWindow类的实现文件，创建认证的消息窗口
+   |--warmth.desktop		warmth的desktop文件
+ |--l10n/			本地化文件目录
+   |--warmth_en.ts		英文（未翻译）字串源码
+   |--warmth_zh_CN.ts		已译为简体中文的字串源码
+ |--images/			图片素材目录
+   |--images.qrc		qmake的素材文件
+   |--warmth.png		本程序的logo
+   |--bg.png			用作认证消息窗口的背景（未完成）
+   
+3. 声明
+  本软件以GNU GPLv3协议发布，可用以下方式获得软件的源代码：
+    git clone git@gitcafe.com:zhtengw/WarMtH.git
+    git clone https://code.google.com/p/warmth/ 
+如有问题，可联系作者Aten Zhang <atenzd@gmail.com>
