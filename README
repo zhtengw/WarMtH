@@ -32,6 +32,6 @@
    
 3. 声明
   本软件以GNU GPLv3协议发布，可用以下方式获得软件的源代码：
-    git clone git@gitcafe.com:zhtengw/WarMtH.git
+    git clone git://gitcafe.com/zhtengw/WarMtH.git
     git clone https://code.google.com/p/warmth/ 
 如有问题，可联系作者Aten Zhang <atenzd@gmail.com>
