@@ -32,7 +32,7 @@
 # Changelog:   
 # 1.0-1:       11/Sep/2012 by Aten Zhang <atenzd@gmail.com>
 #              * Initial build.
-# Run 'sh mentohust.SlackBuild' to build a Slackware package.
+# Run 'sh warmth.SlackBuild' to build a Slackware package.
 # The package (.tgz) and .txt file as well as build logs are created in /tmp .
 # Install it using 'installpkg'. 
 #

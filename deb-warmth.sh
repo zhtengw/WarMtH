@@ -32,9 +32,9 @@
 # Changelog:   
 # 1.0-1:       11/Sep/2012 by Aten Zhang <atenzd@gmail.com>
 #              * Initial build.
-# Run 'sh mentohust.SlackBuild' to build a Slackware package.
-# The package (.tgz) and .txt file as well as build logs are created in /tmp .
-# Install it using 'installpkg'. 
+# Run 'bash deb-warmth.sh' to build a deb package.
+# The package (.deb) and is created in /tmp .
+# Install it using 'dpkg -i'. 
 #
 # -----------------------------------------------------------------------------
 
@@ -150,4 +150,4 @@ cp -r $TMP/tmp-$PKGNAM/DEBIAN $PKG
 
 cd $TMP
 
-dpkg-deb -b $PKG 
+dpkg-deb -b $PKG $OUTPUT/${PKGNAM}_${VERSION}-${BUILD}_${ARCH}.deb 2>&1 | tee $OUTPUT/makepkg-${PKGNAM}.log
