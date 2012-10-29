@@ -1,0 +1,17 @@
+Source: warmth
+Section: net
+Priority: optional
+Maintainer: Aten Zhang <atenzd@gmail.com>
+Build-Depends: debhelper (>= 7), autotools-dev, qt-sdk, autopoint, autoconf, gettext
+Standards-Version: 1.0
+Homepage: http://code.google.com/p/warmth/
+Package: warmth
+Version: 1.0-1
+Architecture: all
+Depends: libpcap0.8 | libpcap0.9 | libpcap1.0 | libpcap1, libqt4-dev, libqtgui4
+Description: WarMtH (a GUI front end of MentoHUST)
+ WarMtH works around MentoHUST.
+ MentoHUST is a third-party client using Ruijie authentication. 
+ It runs well on Linux, Mac and Windows.It supports the checking 
+ algorithm of Ruijie client.It can simulatenearly all vertions  
+ of Ruijie and supports multi-netcard.  
