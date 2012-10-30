@@ -81,7 +81,7 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
     //setWindowTitle(tr("Authentication"));
     setWindowFlags(Qt::FramelessWindowHint); // not show the window frame
     setWindowOpacity(1);
-    setAttribute(Qt::WA_TranslucentBackground);
+    setAttribute(Qt::WA_TranslucentBackground,true);
     setLayout(mainLayout);
 
     // resize first and then it can be move to the center of the screen

@@ -28,7 +28,7 @@
  |--images/			图片素材目录
    |--images.qrc		qmake的素材文件
    |--warmth.png		本程序的logo
-   |--bg.png			用作认证消息窗口的背景（未完成）
+   |--bg.png			用作认证消息窗口的背景
    
 3. 声明
   本软件以GNU GPLv3协议发布，可用以下方式获得软件的源代码：
