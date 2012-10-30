@@ -226,5 +226,8 @@ void AuthMsgWindow::paintEvent(QPaintEvent *event)
     //trying to set a transparent background image
     //the size of image is 500x400
     QPainter painter(this);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
     painter.drawImage(QRectF(0, 0, 450, 360), QImage(":/bg.png"));
+    painter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+    painter.fillRect(QImage(":/bg.png").rect(), QColor(0, 0, 0, 250));
 }
