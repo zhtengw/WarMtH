@@ -121,7 +121,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     /* 5. DHCP type */
     //CVDhcpType=0;
     dhcpTypeName = new QLabel(tr("DHCP type:"));
-    dhcpTypeName->setToolTip(tr("Set the type of DHCP."));
+    dhcpTypeName->setToolTip(tr("Set the type of DHCP"));
     dhcpType = new QComboBox;
     dhcpTypeArg = new QStringList;
     //the index for DHCP type is: 0(not in used) 1(secondary authenticate) 2(post authenticate) 3(pre authenticate)
