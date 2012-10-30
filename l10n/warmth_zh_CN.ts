@@ -4,43 +4,39 @@
 <context>
     <name>AuthMsgWindow</name>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="33"/>
-        <source>&lt;font size=5&gt;&lt;b&gt;Authentication&lt;/b&gt;&lt;/font&gt;</source>
-        <translation>&lt;font size=5&gt;&lt;b&gt;认证消息&lt;/b&gt;&lt;/font&gt;</translation>
-    </message>
-    <message>
-        <location filename="../src/authmsgwindow.cpp" line="34"/>
-        <location filename="../src/authmsgwindow.cpp" line="201"/>
+        <location filename="../src/authmsgwindow.cpp" line="31"/>
+        <location filename="../src/authmsgwindow.cpp" line="187"/>
         <source>&amp;Exit</source>
         <translation>退出认证(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="35"/>
-        <location filename="../src/authmsgwindow.cpp" line="197"/>
+        <location filename="../src/authmsgwindow.cpp" line="32"/>
+        <location filename="../src/authmsgwindow.cpp" line="183"/>
         <source>&amp;Minimize</source>
         <translation>最小化(&amp;M)</translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="36"/>
+        <location filename="../src/authmsgwindow.cpp" line="33"/>
         <source>Re-&amp;authenticate</source>
         <translation>重新认证(&amp;A)</translation>
     </message>
     <message>
+        <location filename="../src/authmsgwindow.cpp" line="64"/>
         <source>Authentication</source>
-        <translation type="obsolete">认证</translation>
+        <translation>认证</translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="192"/>
+        <location filename="../src/authmsgwindow.cpp" line="178"/>
         <source>WarMtH</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="204"/>
+        <location filename="../src/authmsgwindow.cpp" line="190"/>
         <source>&amp;Restore</source>
         <translation>恢复窗口(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="208"/>
+        <location filename="../src/authmsgwindow.cpp" line="194"/>
         <source>&amp;Quit</source>
         <translation>离开(&amp;Q)</translation>
     </message>
