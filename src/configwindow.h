@@ -29,6 +29,7 @@
 #include <QLabel>
 #include <QLayout>
 #include <QCheckBox>
+#include <QTabWidget>
 
 class ConfigWindow : public QDialog
 {
@@ -56,6 +57,10 @@ private slots:
 private:
     void setArgs();
     QStringList *args;
+    QTabWidget *configTabs;
+    QWidget *argsPage;
+    QWidget *appPage;
+
 
     QPushButton *confirmButton;
     QPushButton *cancelButton;

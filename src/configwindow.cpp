@@ -25,6 +25,14 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     // settings
     QSettings setting("WarMtH","warmth");
 
+    ////**Initialize the tab page**////
+    configTabs = new QTabWidget;
+    argsPage = new QWidget;
+    appPage = new QWidget;
+
+    configTabs->addTab(argsPage,tr("&Arguments"));
+    configTabs->addTab(appPage,tr("A&pplication"));
+
     ////**Widgets on configuration window**////
     /* 1. Confirm and Exit buttons */
     confirmButton = new QPushButton(tr("Confir&m"));
@@ -36,12 +44,13 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     buttonLayout->addWidget(confirmButton);
     buttonLayout->addWidget(cancelButton);
 
+    //**Widgets on arguments page**//
     /* 2. Net cards selection */
     CVNetCard = new QString;
     netCardName = new QLabel(tr("Netcard:"));
     netCardSelect = new QComboBox;
     netCardArg = new QStringList;
-    netCardName->setToolTip(tr("Select the network card you used."));
+    netCardName->setToolTip(tr("Select the network card you used"));
     QHBoxLayout *netCardLayout = new QHBoxLayout;
     netCardLayout->addWidget(netCardName);
     netCardLayout->addWidget(netCardSelect);
@@ -87,7 +96,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     /* 4. time to display notification */
     CVDispNotif = new QString;
     dispNotif = new QLabel(tr("Display Notification:"));
-    dispNotif->setToolTip(tr("Seconds to display system notification, letters to no show."));
+    dispNotif->setToolTip(tr("Seconds to display system notification, letters to no show"));
     dispNotifTime = new QLineEdit;
     dispNotifArg = new QStringList;
     QLabel *unitdis = new QLabel(tr("s [0(no) 1-20(yes)]"));
@@ -131,7 +140,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     /* 6. authenticate timeout */
     CVAuthTO = new QString;
     authTimeOutName= new QLabel(tr("Authenticate timeout:"));
-    authTimeOutName->setToolTip(tr("Seconds to wait for authentication."));
+    authTimeOutName->setToolTip(tr("Seconds to wait for authentication"));
     authTimeOut = new QLineEdit;
     authTimeOutArg = new QStringList;
     QLabel *unitTO = new QLabel(tr("s"));
@@ -155,7 +164,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     /* 7. max failure times */
     CVMaxFT = new QString;
     maxFailTimesName= new QLabel(tr("Max failure times:"));
-    maxFailTimesName->setToolTip(tr("Times limit for failure[0 means no limit]."));
+    maxFailTimesName->setToolTip(tr("Times limit for failure[0 means no limit]"));
     maxFailTimes = new QLineEdit;
     maxFailTimesArg = new QStringList;
 
@@ -176,7 +185,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     /* 8. wait on failure timeout */
     CVWaitFTO = new QString;
     waitFailTimeOutName= new QLabel(tr("Wait on failure timeout:"));
-    waitFailTimeOutName->setToolTip(tr("Seconds to wait on failure."));
+    waitFailTimeOutName->setToolTip(tr("Seconds to wait on failure"));
     waitFailTimeOut = new QLineEdit;
     waitFailTimeOutArg = new QStringList;
     QLabel *unitFTO = new QLabel(tr("s"));
@@ -200,7 +209,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     /* 9. heartbeat timeout */
     CVHeatBTO = new QString;
     heartbeatTimeOutName= new QLabel(tr("Heartbeat timeout:"));
-    heartbeatTimeOutName->setToolTip(tr("Interval between sending two heartbeat packages."));
+    heartbeatTimeOutName->setToolTip(tr("Interval between sending two heartbeat packages"));
     heartbeatTimeOut = new QLineEdit;
     heartbeatTimeOutArg = new QStringList;
     QLabel *unitHTO = new QLabel(tr("s"));
@@ -224,7 +233,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     /* 10. imitated client version */
     CVClientVer= new QString;
     clientVersionName= new QLabel(tr("Client Version:"));
-    clientVersionName->setToolTip(tr("The version of authentification client to imitate[default to 0.00, compatible with xrgsu]."));
+    clientVersionName->setToolTip(tr("The version of authentification client to imitate[default to 0.00, compatible with xrgsu]"));
     clientVersion = new QLineEdit;
     clientVersionArg = new QStringList;
 
@@ -244,6 +253,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     connect(clientVersion,SIGNAL(textChanged(QString)), this, SLOT(saveClientVersion(QString)));
 
+    //**Widgets on application page**//
     /* 11. auto show system tray message */
     autoTrayMsg = new QCheckBox(tr("Show balloon message on system tray"));
     autoTrayMsg->setChecked(setting.value("traymsg",1).toInt()==1);
@@ -251,17 +261,24 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     connect(autoTrayMsg,SIGNAL(clicked()),this,SLOT(saveTrayMsg()));
 
     ////** set the whole layout of configure window **////
+    QVBoxLayout *argsPageLayout = new QVBoxLayout;
+    argsPageLayout->addLayout(clientVersionLayout);
+    argsPageLayout->addLayout(heartbeatTimeOutLayout);
+    argsPageLayout->addLayout(waitFailTimeOutLayout);
+    argsPageLayout->addLayout(maxFailTimesLayout);
+    argsPageLayout->addLayout(authTimeOutLayout);
+    argsPageLayout->addLayout(dhcpTypeLayout);
+    argsPageLayout->addLayout(dispNotifLayout);
+    argsPageLayout->addLayout(mulCastLayout);
+    argsPageLayout->addLayout(netCardLayout);
+    argsPage->setLayout(argsPageLayout);
+
+    QVBoxLayout *appPageLayout = new QVBoxLayout;
+    appPageLayout->addWidget(autoTrayMsg);
+    appPage->setLayout(appPageLayout);
+
     QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addLayout(clientVersionLayout);
-    mainLayout->addLayout(heartbeatTimeOutLayout);
-    mainLayout->addLayout(waitFailTimeOutLayout);
-    mainLayout->addLayout(maxFailTimesLayout);
-    mainLayout->addLayout(authTimeOutLayout);
-    mainLayout->addLayout(dhcpTypeLayout);
-    mainLayout->addLayout(dispNotifLayout);
-    mainLayout->addLayout(mulCastLayout);
-    mainLayout->addLayout(netCardLayout);
-    mainLayout->addWidget(autoTrayMsg);
+    mainLayout->addWidget(configTabs);
     mainLayout->addLayout(buttonLayout);
 
     setLayout(mainLayout);
