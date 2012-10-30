@@ -4,39 +4,39 @@
 <context>
     <name>AuthMsgWindow</name>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="31"/>
-        <location filename="../src/authmsgwindow.cpp" line="187"/>
+        <location filename="../src/authmsgwindow.cpp" line="33"/>
+        <source>&lt;font size=5&gt;&lt;b&gt;Authentication&lt;/b&gt;&lt;/font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/authmsgwindow.cpp" line="34"/>
+        <location filename="../src/authmsgwindow.cpp" line="201"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="32"/>
-        <location filename="../src/authmsgwindow.cpp" line="183"/>
+        <location filename="../src/authmsgwindow.cpp" line="35"/>
+        <location filename="../src/authmsgwindow.cpp" line="197"/>
         <source>&amp;Minimize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="33"/>
+        <location filename="../src/authmsgwindow.cpp" line="36"/>
         <source>Re-&amp;authenticate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="64"/>
-        <source>Authentication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/authmsgwindow.cpp" line="178"/>
+        <location filename="../src/authmsgwindow.cpp" line="192"/>
         <source>WarMtH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="190"/>
+        <location filename="../src/authmsgwindow.cpp" line="204"/>
         <source>&amp;Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="194"/>
+        <location filename="../src/authmsgwindow.cpp" line="208"/>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>

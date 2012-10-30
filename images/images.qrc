@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>warmth.png</file>
         <file>bg.png</file>
+        <file>test.qml</file>
     </qresource>
 </RCC>
