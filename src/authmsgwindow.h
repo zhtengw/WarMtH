@@ -43,10 +43,10 @@ public:
 
 //signals:
 //    void authMWhidden();
-
+#ifdef ENABLE_TRANSPARENT
 protected:
     void paintEvent(QPaintEvent *event);
-
+#endif
 private slots:
     void readresult();
     void exitClicked();
@@ -66,7 +66,7 @@ private:
     QPushButton *exitButton;
     QPushButton *miniButton;
     QPushButton *reauthButton;
-    QVBoxLayout *buttons;
+    //QVBoxLayout *buttons;
     QProcess *backend;
     QString *backendName;
     QStringList *args;
