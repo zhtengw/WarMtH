@@ -28,6 +28,7 @@
 #include <QIcon>
 #include <QMenu>
 #include <QBoxLayout>
+#include <QLabel>
 
 class AuthMsgWindow : public QDialog
 {
@@ -42,7 +43,10 @@ public:
 
 //signals:
 //    void authMWhidden();
-
+#ifdef ENABLE_TRANSPARENT
+protected:
+    void paintEvent(QPaintEvent *event);
+#endif
 private slots:
     void readresult();
     void exitClicked();
@@ -58,10 +62,11 @@ private:
     void createTrayMenu();
 
     QTextEdit *authMsg;
+    QLabel *msgTitle;
     QPushButton *exitButton;
     QPushButton *miniButton;
     QPushButton *reauthButton;
-    QHBoxLayout *buttons;
+    //QVBoxLayout *buttons;
     QProcess *backend;
     QString *backendName;
     QStringList *args;

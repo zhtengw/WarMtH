@@ -128,7 +128,7 @@ make install DESTDIR=$PKG || exit 1
 
 cd ../
 lrelease l10n/*.ts
-qmake WarMtH.pro
+qmake DEFINES+=ENABLE_TRANSPARENT #WarMtH.pro
 make
 make install INSTALL_ROOT=$PKG
 
