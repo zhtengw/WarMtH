@@ -9,8 +9,7 @@
  |--WarMtH.pro			qmake工程文件
  |--INSTALL			安装说明
  |--DEBIAN/			打包deb包所用
- |--deb-warmth.sh		用于.deb打包的脚本
- |--warmth.SlackBuild		用于Slackware .tgz包的打包脚本
+ |--build.sh			用于编译打包的脚本
  |--mentohust/			从svn拷贝的MentoHust源代码
  |--mentohust-linebuf.patch	禁用mentohust全缓冲的patch
  |--src/			warmth源码目录
@@ -21,6 +20,8 @@
    |--configwindow.cpp		ConfigWindow类的实现文件，创建程序的配置对话框
    |--authmsgwindow.h		AuthMsgWindow类的头文件
    |--authmsgwindow.cpp		AuthMsgWindow类的实现文件，创建认证的消息窗口
+   |--aboutwindow.h		AboutWindow类的头文件
+   |--aboutwindow.cpp		AboutWindow类的实现文件，创建软件的关于窗口
    |--warmth.desktop		warmth的desktop文件
  |--l10n/			本地化文件目录
    |--warmth_en.ts		英文（未翻译）字串源码
