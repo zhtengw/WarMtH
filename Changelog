@@ -1,0 +1,4 @@
+Nov/6/2012 
+  1. enable changing the apperance of the authentication window in runtime (add a configura option instead of setting during pre-process)
+  2. complete the destructor, delete the pointers of class members (the child widgets will also be deleted when delete the parent widget, so I got runtime error at a time because I delete the child widget later. Then I only need to delete the parent widget)
+  3. add about window
