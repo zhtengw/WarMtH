@@ -16,8 +16,17 @@ DEPENDPATH += . src
 INCLUDEPATH += . src
 
 # Input
-HEADERS += src/configwindow.h src/mainwindow.h src/authmsgwindow.h
-SOURCES += src/configwindow.cpp src/main.cpp src/mainwindow.cpp src/authmsgwindow.cpp
+HEADERS += \
+    src/configwindow.h \
+    src/mainwindow.h \
+    src/authmsgwindow.h \
+    src/aboutwindow.h
+SOURCES += \
+    src/configwindow.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/authmsgwindow.cpp \
+    src/aboutwindow.cpp
 
 RESOURCES += \
     images/images.qrc

@@ -40,7 +40,6 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    friend class AuthMsgWindow;
 
 //public slots:
 //    void authClicked();
@@ -51,6 +50,7 @@ private slots:
     void createCfgWd();
     void showAndHideIcon();
     void saveID(int state);
+    void aboutMe();
 
 private:
     //functions to encrypt and decrypt password
@@ -66,6 +66,7 @@ private:
     QPushButton *authButton;
     QPushButton *closeButton;
     QPushButton *configButton;
+    QPushButton *aboutButton;
     AuthMsgWindow *authMW;
     ConfigWindow *confW;
 };

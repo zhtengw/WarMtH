@@ -17,10 +17,12 @@
  *  along with WarMtH.  If not, see <http://www.gnu.org/licenses/>.        *
  ***************************************************************************/
 #include <QTextCodec>
+#include <QApplication>
 
 #include "mainwindow.h"
 #include "configwindow.h"
 #include "authmsgwindow.h"
+#include "aboutwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QDialog(parent)
@@ -28,9 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
 
      QSettings setting("WarMtH","warmth");
 
-
-    //authMW = new AuthMsgWindow;
-    //confW = new ConfigWindow;
     netid = new QLabel(tr("&NetID:"));
     idEdit = new QLineEdit;
     netid->setBuddy(idEdit);
@@ -45,14 +44,16 @@ MainWindow::MainWindow(QWidget *parent)
     rembCheckBox = new QCheckBox(tr("&Remember for next authification"));
 
     authButton = new QPushButton(tr("&Authenticate"));
-    authButton->setDefault(true);
+    //authButton->setDefault(true);
     authButton->setEnabled(false);
 
     closeButton = new QPushButton(tr("Clos&e"));
     configButton = new QPushButton(tr("&Configure"));
+    aboutButton = new QPushButton(tr("Abou&t"));
 
-    createAuthMW();
+    this->setAttribute(Qt::WA_DeleteOnClose);
     createCfgWd();
+    createAuthMW();
 
     enableAuthButton("");
     connect(pdEdit, SIGNAL(textChanged(const QString&)), this, SLOT(enableAuthButton(const QString&)));
@@ -60,31 +61,51 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     connect(closeButton, SIGNAL(clicked()), this, SLOT(close()));
+    connect(closeButton, SIGNAL(clicked()), qApp, SLOT(quit()));
+    connect(aboutButton, SIGNAL(clicked()), this, SLOT(aboutMe()));
 
     connect(rembCheckBox, SIGNAL(stateChanged(int)), this, SLOT(saveID(int)));
 
-    QHBoxLayout *topLeftLayout = new QHBoxLayout;
-    topLeftLayout->addWidget(netid);
-    topLeftLayout->addWidget(idEdit);
+    QHBoxLayout *idLayout = new QHBoxLayout;
+    //idLayout->addStretch();
+    idLayout->addWidget(netid);
+    idLayout->addWidget(idEdit);
+    idLayout->addStretch();
 
-    QHBoxLayout *midLeftLayout = new QHBoxLayout;
-    midLeftLayout->addWidget(passwd);
-    midLeftLayout->addWidget(pdEdit);
+    QHBoxLayout *passwdLayout = new QHBoxLayout;
+    //passwdLayout->addStretch();
+    passwdLayout->addWidget(passwd);
+    passwdLayout->addWidget(pdEdit);
+    passwdLayout->addStretch();
+
+    QHBoxLayout *bottomLayout = new QHBoxLayout;
+    bottomLayout->addStretch();
+    bottomLayout->addWidget(configButton);
+    bottomLayout->addStretch();
+    bottomLayout->addWidget(aboutButton);
+    bottomLayout->addStretch();
 
     QVBoxLayout *leftLayout = new QVBoxLayout;
-    leftLayout->addLayout(topLeftLayout);
-    leftLayout->addLayout(midLeftLayout);
+    leftLayout->addLayout(idLayout);
+    leftLayout->addLayout(passwdLayout);
     leftLayout->addWidget(rembCheckBox);
 
     QVBoxLayout *rightLayout = new QVBoxLayout;
+    //rightLayout->addStretch();
     rightLayout->addWidget(authButton);
+    //rightLayout->addStretch();
     rightLayout->addWidget(closeButton);
-    rightLayout->addWidget(configButton);
     rightLayout->addStretch();
 
-    QHBoxLayout *mainLayout = new QHBoxLayout;
-    mainLayout->addLayout(leftLayout);
-    mainLayout->addLayout(rightLayout);
+
+    QHBoxLayout *midLayout = new QHBoxLayout;
+    midLayout->addLayout(leftLayout);
+    midLayout->addLayout(rightLayout);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addLayout(midLayout);
+    mainLayout->addLayout(bottomLayout);
+
     setLayout(mainLayout);
 
     setWindowTitle(tr("WarMtH"));
@@ -94,9 +115,26 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    
+    delete layout();
+    delete netid;
+    delete passwd;
+    delete idEdit;
+    delete pdEdit;
+    delete rembCheckBox;
+    delete authButton;
+    delete closeButton;
+    delete configButton;
+    delete aboutButton;
+    //delete authMW;
+    //delete confW;
 }
 
+void MainWindow::aboutMe()
+{
+    AboutWindow *aboutWD = new AboutWindow;
+    aboutWD->show();
+
+}
 
 void MainWindow::createAuthMW()
 {
@@ -104,11 +142,10 @@ void MainWindow::createAuthMW()
     authMW = new AuthMsgWindow;
     connect(authButton, SIGNAL(clicked()), this, SLOT(authClicked()));
     connect(authButton, SIGNAL(clicked()), this, SLOT(hide()));
+    //connect(authButton, SIGNAL(clicked()), authMW, SLOT(show()));
     connect(authMW, SIGNAL(destroyed()), this, SLOT(show()));
     connect(authMW, SIGNAL(destroyed()), this, SLOT(createAuthMW()));
 
-    //authMW->setObjectName("authmsgwindow");
-    //authMW->setStyleSheet("#authmsgwindow{border-image:url(:/bg.png);}");
 
 }
 void MainWindow::authClicked()
@@ -123,6 +160,8 @@ void MainWindow::authClicked()
     }
 
     authMW->trayMsg = confW->autoTrayMsg->isChecked();
+    authMW->transparent = confW->transAuthWD->isChecked();
+    authMW->displayWD();
     authMW->setArgs(tempid, temppd);
     confW->setArgs();
     *authMW->args=*authMW->args<<*confW->args;
@@ -156,7 +195,6 @@ void MainWindow::saveID(int state)
 {
     if(state == 2 )
     {
-        //QMessageBox::information(this,tr("ss"),tr("I'm checked!"));
         QSettings setting("WarMtH","warmth");
         setting.setValue("netid",idEdit->text());
         setting.setValue("password",getXorEncryptDecrypt(pdEdit->text(),111));

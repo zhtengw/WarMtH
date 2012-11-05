@@ -53,6 +53,7 @@ private slots:
     void saveHeartbeatTimeOut(const QString time);
     void saveClientVersion(const QString version);
     void saveTrayMsg();
+    void saveTransAuthWD();
 
 private:
     void setArgs();
@@ -113,6 +114,9 @@ private:
 
     QCheckBox *autoTrayMsg;
     int CVTrayMsg;              // save current state of the checkbox
+
+    QCheckBox *transAuthWD;
+    int CVTransparent;          // save current state of the checkbox
 };
 
 #endif // CONFIGWINDOW_H

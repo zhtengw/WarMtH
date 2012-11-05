@@ -5,12 +5,12 @@ warmth中已附带打过补丁的mentohust，安装前请先删除本机的mento
 
 
 1. Slackware发行版
-  作为root运行warmth.SlackBuild，会自动进行编译打包，tgz安装包创建在/tmp目录下，
+   作为root运行build.sh，会自动进行编译打包，tgz安装包创建在/tmp目录下，
 可直接installpkg安装。
 
 2. Debian/Ubuntu发行版
-   作为root运行deb-warmth.sh，会自动进行编译打包，deb安装包创建在/tmp目录下，
-可直接installpkg安装。
+   作为root运行build.sh，会自动进行编译打包，deb安装包创建在/tmp目录下，
+可直接dpkg -i安装。
 
 3. 其它发行版请手动编译安装：
 首先编译mentohust

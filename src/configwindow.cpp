@@ -22,6 +22,7 @@
 ConfigWindow::ConfigWindow(QWidget *parent)
     : QDialog(parent)
 {
+    setAttribute(Qt::WA_DeleteOnClose);
     // settings
     QSettings setting("WarMtH","warmth");
 
@@ -41,8 +42,11 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     connect(confirmButton, SIGNAL(clicked()), this, SLOT(confirmClicked()));
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->addStretch();
     buttonLayout->addWidget(confirmButton);
+    buttonLayout->addStretch();
     buttonLayout->addWidget(cancelButton);
+    buttonLayout->addStretch();
 
     //**Widgets on arguments page**//
     /* 2. Net cards selection */
@@ -92,31 +96,6 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     *mulCastAdrArg=QStringList()<<"-a"<<setting.value("mulcastaddress",0).toString();
     CVMulAdr = setting.value("mulcastaddress",0).toInt();
     connect(mulCastAdr,SIGNAL(currentIndexChanged(int)), this, SLOT(saveMulAdr(int)));
-
-    /* 4. time to display notification */
-    CVDispNotif = new QString;
-    dispNotif = new QLabel(tr("Display Notification:"));
-    dispNotif->setToolTip(tr("Seconds to display system notification, letters to no show"));
-    dispNotifTime = new QLineEdit;
-    dispNotifArg = new QStringList;
-    QLabel *unitdis = new QLabel(tr("s [0(no) 1-20(yes)]"));
-
-    //line edit width
-    dispNotifTime->setMaximumWidth(22);
-    dispNotifTime->setMaxLength(2);
-    //set default value
-    dispNotifTime->setText(setting.value("displaynotification",5).toString());
-    *dispNotifArg = QStringList()<<"-y"<<setting.value("displaynotification",5).toString();
-    *CVDispNotif = setting.value("displaynotification",5).toString();
-
-    //set layout
-    QHBoxLayout *dispNotifLayout = new QHBoxLayout;
-    dispNotifLayout->addWidget(dispNotif);
-    dispNotifLayout->addStretch();
-    dispNotifLayout->addWidget(dispNotifTime);
-    dispNotifLayout->addWidget(unitdis);
-
-    connect(dispNotifTime,SIGNAL(textChanged(QString)), this, SLOT(saveDispNotif(QString)));
 
     /* 5. DHCP type */
     //CVDhcpType=0;
@@ -254,11 +233,42 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     connect(clientVersion,SIGNAL(textChanged(QString)), this, SLOT(saveClientVersion(QString)));
 
     //**Widgets on application page**//
+    /* 4. time to display notification */
+    CVDispNotif = new QString;
+    dispNotif = new QLabel(tr("System Notification:"));
+    dispNotif->setToolTip(tr("Seconds to display system notification, letters to no show"));
+    dispNotifTime = new QLineEdit;
+    dispNotifArg = new QStringList;
+    QLabel *unitdis = new QLabel(tr("s [0(no) 1-20(yes)]"));
+
+    //line edit width
+    dispNotifTime->setMaximumWidth(22);
+    dispNotifTime->setMaxLength(2);
+    //set default value
+    dispNotifTime->setText(setting.value("displaynotification",5).toString());
+    *dispNotifArg = QStringList()<<"-y"<<setting.value("displaynotification",5).toString();
+    *CVDispNotif = setting.value("displaynotification",5).toString();
+
+    //set layout
+    QHBoxLayout *dispNotifLayout = new QHBoxLayout;
+    dispNotifLayout->addWidget(dispNotif);
+    dispNotifLayout->addStretch();
+    dispNotifLayout->addWidget(dispNotifTime);
+    dispNotifLayout->addWidget(unitdis);
+
+    connect(dispNotifTime,SIGNAL(textChanged(QString)), this, SLOT(saveDispNotif(QString)));
+
     /* 11. auto show system tray message */
-    autoTrayMsg = new QCheckBox(tr("Show balloon message on system tray"));
-    autoTrayMsg->setChecked(setting.value("traymsg",1).toInt()==1);
+    autoTrayMsg = new QCheckBox(tr("Show balloon message on system tray when minimized"));
+    autoTrayMsg->setChecked((setting.value("traymsg",1).toInt())==1);
     CVTrayMsg=setting.value("traymsg",1).toInt();
     connect(autoTrayMsg,SIGNAL(clicked()),this,SLOT(saveTrayMsg()));
+
+    /* 12. enable transparent authentication message window or not */
+    transAuthWD = new QCheckBox(tr("Enable transparent authentication window"));
+    transAuthWD->setChecked((setting.value("transparentauthwd",1).toInt())==1);
+    CVTransparent=setting.value("transparentauthwd",1).toInt();
+    connect(transAuthWD,SIGNAL(clicked()),this,SLOT(saveTransAuthWD()));
 
     ////** set the whole layout of configure window **////
     QVBoxLayout *argsPageLayout = new QVBoxLayout;
@@ -268,13 +278,15 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     argsPageLayout->addLayout(maxFailTimesLayout);
     argsPageLayout->addLayout(authTimeOutLayout);
     argsPageLayout->addLayout(dhcpTypeLayout);
-    argsPageLayout->addLayout(dispNotifLayout);
     argsPageLayout->addLayout(mulCastLayout);
     argsPageLayout->addLayout(netCardLayout);
     argsPage->setLayout(argsPageLayout);
 
     QVBoxLayout *appPageLayout = new QVBoxLayout;
+    appPageLayout->addWidget(transAuthWD);
+    appPageLayout->addLayout(dispNotifLayout);
     appPageLayout->addWidget(autoTrayMsg);
+    appPageLayout->addStretch();
     appPage->setLayout(appPageLayout);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
@@ -293,7 +305,32 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
 ConfigWindow::~ConfigWindow()
 {
-    
+    delete layout();
+    delete args;
+
+    delete netCardArg;
+    delete CVNetCard;
+    delete mulCastAdrArg;
+    delete dispNotifArg;
+    delete CVDispNotif;
+    delete dhcpTypeArg;
+    delete authTimeOutArg;
+    delete CVAuthTO;
+    delete maxFailTimesArg;
+    delete CVMaxFT;
+    delete waitFailTimeOutArg;
+    delete CVWaitFTO;
+    delete heartbeatTimeOutArg;
+    delete CVHeatBTO;
+    delete clientVersionArg;
+    delete CVClientVer;
+
+    //when the configTabs deleted, the widgets included in it will be deleted too.
+    //so I don't need to delete them
+    delete configTabs;
+    delete confirmButton;
+    delete cancelButton;
+
 }
 
 
@@ -339,13 +376,14 @@ void ConfigWindow::confirmClicked()
 
     setting.setValue("traymsg",CVTrayMsg);
 
+    setting.setValue("transparentauthwd",CVTransparent);
+
     close();
 }
 
 void ConfigWindow::cancelClicked()
 {
     close();
-    delete this;
 }
 
 void ConfigWindow::saveNetCard(const QString name)
@@ -403,6 +441,11 @@ void ConfigWindow::saveClientVersion(const QString version)
 void ConfigWindow::saveTrayMsg()
 {
     autoTrayMsg->isChecked()?CVTrayMsg=1:CVTrayMsg=0;
+}
+
+void ConfigWindow::saveTransAuthWD()
+{
+    transAuthWD->isChecked()?CVTransparent=1:CVTransparent=0;
 }
 
 void ConfigWindow::setArgs()

@@ -25,7 +25,6 @@
 #include <QGridLayout>
 
 #include "authmsgwindow.h"
-#include "mainwindow.h"
 
 AuthMsgWindow::AuthMsgWindow(QWidget *parent)
         : QDialog(parent)
@@ -36,6 +35,7 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
     authMsg = new QTextEdit;
     args = new QStringList;
     sysTrayIcon = new QSystemTrayIcon(QIcon(":/warmth.png"));
+    setAttribute(Qt::WA_DeleteOnClose);
 
     trayActions();
     createTrayMenu();
@@ -46,70 +46,11 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
             this,SLOT(trayIconAct(QSystemTrayIcon::ActivationReason)));
 
     authMsg->setReadOnly(true);
-    
+
+    setWindowTitle(tr("Authentication"));
+
     msgTitle = new QLabel(tr("<font size=5><b>Authentication</b></font>"));
-    
-    QGridLayout *titleLayout = new QGridLayout;
-    titleLayout->addWidget(msgTitle);
 
-#ifndef ENABLE_TRANSPARENT
-    
-    titleLayout->setAlignment(Qt::AlignHCenter);
-    
-    QHBoxLayout *buttons = new QHBoxLayout;
-    
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addLayout(titleLayout);
-    mainLayout->addWidget(authMsg);
-    
-    resize(374,250);
-#else
-        
-    setAutoFillBackground(true);
-    //setWindowTitle(tr("Authentication"));
-    setWindowOpacity(1);
-    setAttribute(Qt::WA_TranslucentBackground,true);
-    
-    titleLayout->setContentsMargins(50,20,100,10);
-    
-    QVBoxLayout *buttons = new QVBoxLayout;
-    buttons->setContentsMargins(0,100,10,0);
-    
-    QGridLayout *msgLayout = new QGridLayout;
-    //msgLayout->addStretch();
-    msgLayout->addWidget(authMsg);
-    msgLayout->setContentsMargins(15,5,0,20);
-    //msgLayout->addStretch();
-    
-    QVBoxLayout *leftLayout = new QVBoxLayout;
-    leftLayout->addLayout(titleLayout);
-    leftLayout->addLayout(msgLayout);
-
-    QHBoxLayout *mainLayout = new QHBoxLayout;
-    mainLayout->addLayout(leftLayout);
-    
-    // resize first and then it can be move to the center of the screen
-    resize(450,360);
-
-  
-#endif
-    
-    buttons->addStretch();
-    buttons->addWidget(miniButton);
-    buttons->addStretch();
-    buttons->addWidget(exitButton);
-    buttons->addStretch();
-    //reauthenticate button's on the same position as minimize button
-    buttons->insertWidget(1,reauthButton);
-    reauthButton->hide();
-    
-    mainLayout->addLayout(buttons);
-    setLayout(mainLayout);
-
-    
-    setWindowFlags(Qt::FramelessWindowHint); // not show the window frame
-    
-    move((QApplication::desktop()->width()-this->width())/2,(QApplication::desktop()->height()-this->height())/2);
 
     connect(exitButton, SIGNAL(clicked()), this, SLOT(exitClicked()));
     connect(miniButton, SIGNAL(clicked()), this, SLOT(miniClicked()));
@@ -126,6 +67,99 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
 
 AuthMsgWindow::~AuthMsgWindow()
 {
+    delete layout();
+    delete msgTitle;
+    delete authMsg;
+    delete exitButton;
+    delete miniButton;
+    delete reauthButton;
+    delete args;
+    delete minimizeAction;
+    delete exitAction;
+    delete restoreAction;
+    delete quitAction;    
+    delete trayIconMenu;
+    delete sysTrayIcon;
+    //delete backend;
+    delete backendName;
+}
+
+void AuthMsgWindow::displayWD()
+{
+    delete layout();
+
+    //#ifndef ENABLE_TRANSPARENT
+    //try to use if statement instead of pre-processing
+    if(!transparent)
+    {
+
+        QHBoxLayout *buttons = new QHBoxLayout;
+        buttons->addStretch();
+        buttons->addWidget(miniButton);
+        buttons->addStretch();
+        buttons->addWidget(exitButton);
+        buttons->addStretch();
+        //reauthenticate button's on the same position as minimize button
+        buttons->insertWidget(1,reauthButton);
+        reauthButton->hide();
+
+
+        resize(358,250);
+
+
+        QVBoxLayout *mainLayout = new QVBoxLayout;
+        mainLayout->addWidget(authMsg);
+        mainLayout->addLayout(buttons);
+        setLayout(mainLayout);
+    }
+    //#else
+    else
+    {
+        setAutoFillBackground(true);
+        //setWindowTitle(tr("Authentication"));
+        setWindowOpacity(1);
+        setAttribute(Qt::WA_TranslucentBackground,true);
+
+        QGridLayout *titleLayout = new QGridLayout;
+        titleLayout->addWidget(msgTitle);
+        titleLayout->setContentsMargins(50,20,100,10);
+
+        QVBoxLayout *buttons = new QVBoxLayout;
+        buttons->setContentsMargins(0,100,10,0);
+        buttons->addStretch();
+        buttons->addWidget(miniButton);
+        buttons->addStretch();
+        buttons->addWidget(exitButton);
+        buttons->addStretch();
+        //reauthenticate button's on the same position as minimize button
+        buttons->insertWidget(1,reauthButton);
+        reauthButton->hide();
+
+
+        QGridLayout *msgLayout = new QGridLayout;
+        //msgLayout->addStretch();
+        msgLayout->addWidget(authMsg);
+        msgLayout->setContentsMargins(15,5,0,20);
+        //msgLayout->addStretch();
+
+        QVBoxLayout *leftLayout = new QVBoxLayout;
+        leftLayout->addLayout(titleLayout);
+        leftLayout->addLayout(msgLayout);
+
+        QHBoxLayout *mainLayout = new QHBoxLayout;
+        mainLayout->addLayout(leftLayout);
+        mainLayout->addLayout(buttons);
+        setLayout(mainLayout);
+
+        // resize first and then it can be move to the center of the screen
+        resize(450,360);
+
+        setWindowFlags(Qt::FramelessWindowHint); // not show the window frame
+    }
+
+    move((QApplication::desktop()->width()-this->width())/2,(QApplication::desktop()->height()-this->height())/2);
+
+    //#endif
 }
 
 void AuthMsgWindow::readresult()
@@ -151,10 +185,9 @@ void AuthMsgWindow::exitClicked()
 {
     QProcess *exitMTH = new QProcess;
     exitMTH->start("mentohust -k");
-    if(!this->isHidden())this->hide();
-    //emit authMWhidden();
-    delete this->sysTrayIcon;
-    delete this;
+
+    //if(!this->isHidden())this->hide();
+    close();
 }
 
 void AuthMsgWindow::miniClicked()
@@ -244,15 +277,18 @@ void AuthMsgWindow::createTrayMenu()
     sysTrayIcon->setContextMenu(trayIconMenu);
 }
 
-#ifdef	ENABLE_TRANSPARENT
+//#ifdef	ENABLE_TRANSPARENT
 void AuthMsgWindow::paintEvent(QPaintEvent *event)
 {
     //trying to set a transparent background image
     //the size of image is 500x400
     QPainter painter(this);
+    if(transparent)
+    {
     painter.setCompositionMode(QPainter::CompositionMode_Source);
     painter.drawImage(QRectF(0, 0, 450, 360), QImage(":/bg.png"));
     painter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
     painter.fillRect(QImage(":/bg.png").rect(), QColor(0, 0, 0, 250));
+    }
 }
-#endif
+//#endif

@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(":/warmth.png"));
+    app.setQuitOnLastWindowClosed(false);
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + QLocale::system().name(),
                       QLibraryInfo::location(QLibraryInfo::TranslationsPath));

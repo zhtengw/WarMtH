@@ -41,12 +41,10 @@ public:
 
     friend class MainWindow;
 
-//signals:
-//    void authMWhidden();
-#ifdef ENABLE_TRANSPARENT
+//#ifdef ENABLE_TRANSPARENT
 protected:
     void paintEvent(QPaintEvent *event);
-#endif
+//#endif
 private slots:
     void readresult();
     void exitClicked();
@@ -60,13 +58,13 @@ private:
     void setArgs(const QString &id, const QString &pd);
     void trayActions();
     void createTrayMenu();
+    void displayWD();
 
     QTextEdit *authMsg;
     QLabel *msgTitle;
     QPushButton *exitButton;
     QPushButton *miniButton;
     QPushButton *reauthButton;
-    //QVBoxLayout *buttons;
     QProcess *backend;
     QString *backendName;
     QStringList *args;
@@ -77,6 +75,7 @@ private:
     QAction *restoreAction;
     QAction *quitAction;
     bool    trayMsg;
+    bool    transparent;
 };
 
 #endif // AUTHMSGWINDOW_H
