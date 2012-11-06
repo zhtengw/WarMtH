@@ -21,7 +21,7 @@
 #include <QDesktopWidget>
 #include <QPalette>
 #include <QBitmap>
-#include <QtDeclarative/QDeclarativeView>
+#include <QPainter>
 #include <QGridLayout>
 
 #include "authmsgwindow.h"

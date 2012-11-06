@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Copyright 2012  Aten Zhang, SYSU, China
 # All rights reserved.
