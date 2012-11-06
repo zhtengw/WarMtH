@@ -33,12 +33,14 @@ MainWindow::MainWindow(QWidget *parent)
     netid = new QLabel(tr("&NetID:"));
     idEdit = new QLineEdit;
     netid->setBuddy(idEdit);
+    idEdit->setMaximumWidth(140);
     idEdit->setText(setting.value("netid","").toString());
 
     passwd = new QLabel(tr("&Password:"));
     pdEdit = new QLineEdit;
     pdEdit->setEchoMode(QLineEdit::Password);
     passwd->setBuddy(pdEdit);
+    pdEdit->setMaximumWidth(140);
     pdEdit->setText(getXorEncryptDecrypt(setting.value("password","").toString(),111));
 
     rembCheckBox = new QCheckBox(tr("&Remember for next authification"));
@@ -66,50 +68,49 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(rembCheckBox, SIGNAL(stateChanged(int)), this, SLOT(saveID(int)));
 
-    QHBoxLayout *idLayout = new QHBoxLayout;
-    //idLayout->addStretch();
-    idLayout->addWidget(netid);
-    idLayout->addWidget(idEdit);
-    idLayout->addStretch();
-
-    QHBoxLayout *passwdLayout = new QHBoxLayout;
-    //passwdLayout->addStretch();
-    passwdLayout->addWidget(passwd);
-    passwdLayout->addWidget(pdEdit);
-    passwdLayout->addStretch();
+    QHBoxLayout *midLayout = new QHBoxLayout;
+    midLayout->addStretch();
+    midLayout->addWidget(rembCheckBox);
+    midLayout->addStretch();
 
     QHBoxLayout *bottomLayout = new QHBoxLayout;
     bottomLayout->addStretch();
+    bottomLayout->addWidget(authButton);
+    //bottomLayout->addStretch();
+    bottomLayout->addWidget(closeButton);
+    //bottomLayout->addStretch();
     bottomLayout->addWidget(configButton);
-    bottomLayout->addStretch();
+    //bottomLayout->addStretch();
     bottomLayout->addWidget(aboutButton);
     bottomLayout->addStretch();
 
     QVBoxLayout *leftLayout = new QVBoxLayout;
-    leftLayout->addLayout(idLayout);
-    leftLayout->addLayout(passwdLayout);
-    leftLayout->addWidget(rembCheckBox);
+    leftLayout->addWidget(netid);
+    leftLayout->addWidget(passwd);
 
     QVBoxLayout *rightLayout = new QVBoxLayout;
     //rightLayout->addStretch();
-    rightLayout->addWidget(authButton);
-    //rightLayout->addStretch();
-    rightLayout->addWidget(closeButton);
-    rightLayout->addStretch();
+    rightLayout->addWidget(idEdit);
+    rightLayout->addWidget(pdEdit);
 
 
-    QHBoxLayout *midLayout = new QHBoxLayout;
-    midLayout->addLayout(leftLayout);
-    midLayout->addLayout(rightLayout);
+
+    QHBoxLayout *topLayout = new QHBoxLayout;
+    //topLayout->addStretch();
+    topLayout->addLayout(leftLayout);
+    topLayout->addLayout(rightLayout);
+    //topLayout->addStretch();
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addLayout(topLayout);
     mainLayout->addLayout(midLayout);
     mainLayout->addLayout(bottomLayout);
 
     setLayout(mainLayout);
 
+    resize(100,200);
     setWindowTitle(tr("WarMtH"));
-    setFixedHeight(sizeHint().height());
+    //setFixedHeight(sizeHint().height());
 
 }
 

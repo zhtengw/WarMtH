@@ -284,8 +284,8 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     QVBoxLayout *appPageLayout = new QVBoxLayout;
     appPageLayout->addWidget(transAuthWD);
-    appPageLayout->addLayout(dispNotifLayout);
     appPageLayout->addWidget(autoTrayMsg);
+    appPageLayout->addLayout(dispNotifLayout);
     appPageLayout->addStretch();
     appPage->setLayout(appPageLayout);
 
