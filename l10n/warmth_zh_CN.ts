@@ -9,10 +9,6 @@
         <translation>关于 WarMtH</translation>
     </message>
     <message>
-        <source>&lt;h2&gt;WarMtH&lt;/h2&gt;Run in Qt </source>
-        <translation type="obsolete">&lt;h2&gt;WarMtH&lt;/h2&gt;运行于 Qt </translation>
-    </message>
-    <message>
         <location filename="../src/aboutwindow.cpp" line="38"/>
         <source>&lt;p&gt;&lt;big&gt;&lt;b&gt;WarMtH&lt;/b&gt;&lt;/big&gt; Version </source>
         <translation>&lt;p&gt;&lt;big&gt;&lt;b&gt;WarMtH&lt;/b&gt;&lt;/big&gt; 版本 </translation>
@@ -46,11 +42,6 @@
 <context>
     <name>AuthMsgWindow</name>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="52"/>
-        <source>&lt;font size=5&gt;&lt;b&gt;Authentication&lt;/b&gt;&lt;/font&gt;</source>
-        <translation>&lt;font size=5&gt;&lt;b&gt;认证消息&lt;/b&gt;&lt;/font&gt;</translation>
-    </message>
-    <message>
         <location filename="../src/authmsgwindow.cpp" line="32"/>
         <location filename="../src/authmsgwindow.cpp" line="257"/>
         <source>&amp;Exit</source>
@@ -73,6 +64,11 @@
         <translation>认证消息</translation>
     </message>
     <message>
+        <location filename="../src/authmsgwindow.cpp" line="52"/>
+        <source>&lt;font size=5&gt;&lt;b&gt;Authentication&lt;/b&gt;&lt;/font&gt;</source>
+        <translation>&lt;font size=5&gt;&lt;b&gt;认证消息&lt;/b&gt;&lt;/font&gt;</translation>
+    </message>
+    <message>
         <location filename="../src/authmsgwindow.cpp" line="248"/>
         <source>WarMtH</source>
         <translation></translation>
@@ -91,6 +87,16 @@
 <context>
     <name>ConfigWindow</name>
     <message>
+        <location filename="../src/configwindow.cpp" line="34"/>
+        <source>&amp;Arguments</source>
+        <translation>认证参数(&amp;A)</translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="35"/>
+        <source>A&amp;pplication</source>
+        <translation>程序设定(&amp;P)</translation>
+    </message>
+    <message>
         <location filename="../src/configwindow.cpp" line="39"/>
         <source>Confir&amp;m</source>
         <translation>确认(&amp;M)</translation>
@@ -104,20 +110,6 @@
         <location filename="../src/configwindow.cpp" line="54"/>
         <source>Netcard:</source>
         <translation>网卡:</translation>
-    </message>
-    <message>
-        <source>Select the network card you used.</source>
-        <translation type="obsolete">选择你要使用的网卡。</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="34"/>
-        <source>&amp;Arguments</source>
-        <translation>认证参数(&amp;A)</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="35"/>
-        <source>A&amp;pplication</source>
-        <translation>程序设定(&amp;P)</translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="57"/>
@@ -150,76 +142,14 @@
         <translation>赛尔</translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="238"/>
-        <source>System Notification:</source>
-        <translation>显示系统通知:</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="262"/>
-        <source>Show balloon message on system tray when minimized</source>
-        <translation>最小化时在系统托盘显示气泡通知</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="268"/>
-        <source>Enable transparent authentication window</source>
-        <translation>使用透明认证消息窗口</translation>
-    </message>
-    <message>
-        <source>Display Notification:</source>
-        <translation type="obsolete">显示通知:</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="239"/>
-        <source>Seconds to display system notification, letters to no show</source>
-        <translation>显示系统通知的时间，字母表示不显示</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="103"/>
-        <source>Set the type of DHCP</source>
-        <translation>设置DHCP的方式</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="122"/>
-        <source>Seconds to wait for authentication</source>
-        <translation>等待认证完成的时间</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="146"/>
-        <source>Times limit for failure[0 means no limit]</source>
-        <translation>失败次数限制[0表示无限制]</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="167"/>
-        <source>Seconds to wait on failure</source>
-        <translation>认证失败时等待时间</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="191"/>
-        <source>Interval between sending two heartbeat packages</source>
-        <translation>每两次发送心跳包之间的时间间隔</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="215"/>
-        <source>The version of authentification client to imitate[default to 0.00, compatible with xrgsu]</source>
-        <translation>模拟的客户端版本[默认0.00表示兼容xrgsu]</translation>
-    </message>
-    <message>
-        <source>Seconds to display system notification, letters to no show.</source>
-        <translation type="obsolete">显示系统通知的时间，字母表示不显示。</translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="242"/>
-        <source>s [0(no) 1-20(yes)]</source>
-        <translation>秒[0(不显示) 1-20(显示)]</translation>
-    </message>
-    <message>
         <location filename="../src/configwindow.cpp" line="102"/>
         <source>DHCP type:</source>
         <translation>DHCP方式:</translation>
     </message>
     <message>
-        <source>Set the type of DHCP.</source>
-        <translation type="obsolete">设置DHCP的方式。</translation>
+        <location filename="../src/configwindow.cpp" line="103"/>
+        <source>Set the type of DHCP</source>
+        <translation>设置DHCP的方式</translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="107"/>
@@ -247,8 +177,9 @@
         <translation>认证超时:</translation>
     </message>
     <message>
-        <source>Seconds to wait for authentication.</source>
-        <translation type="obsolete">等待认证完成的时间。</translation>
+        <location filename="../src/configwindow.cpp" line="122"/>
+        <source>Seconds to wait for authentication</source>
+        <translation>等待认证完成的时间</translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="125"/>
@@ -263,8 +194,9 @@
         <translation>允许失败次数:</translation>
     </message>
     <message>
-        <source>Times limit for failure[0 means no limit].</source>
-        <translation type="obsolete">失败次数限制[0表示无限制]。</translation>
+        <location filename="../src/configwindow.cpp" line="146"/>
+        <source>Times limit for failure[0 means no limit]</source>
+        <translation>失败次数限制[0表示无限制]</translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="166"/>
@@ -272,8 +204,9 @@
         <translation>失败等待:</translation>
     </message>
     <message>
-        <source>Seconds to wait on failure.</source>
-        <translation type="obsolete">认证失败时等待时间。</translation>
+        <location filename="../src/configwindow.cpp" line="167"/>
+        <source>Seconds to wait on failure</source>
+        <translation>认证失败时等待时间</translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="190"/>
@@ -281,8 +214,9 @@
         <translation>心跳间隔:</translation>
     </message>
     <message>
-        <source>Interval between sending two heartbeat packages.</source>
-        <translation type="obsolete">每两次发送心跳包之间的时间间隔。</translation>
+        <location filename="../src/configwindow.cpp" line="191"/>
+        <source>Interval between sending two heartbeat packages</source>
+        <translation>每两次发送心跳包之间的时间间隔</translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="214"/>
@@ -290,12 +224,34 @@
         <translation>客户端版本号:</translation>
     </message>
     <message>
-        <source>The version of authentification client to imitate[default to 0.00, compatible with xrgsu].</source>
-        <translation type="obsolete">模拟的客户端版本[默认0.00表示兼容xrgsu]。</translation>
+        <location filename="../src/configwindow.cpp" line="215"/>
+        <source>The version of authentification client to imitate[default to 0.00, compatible with xrgsu]</source>
+        <translation>模拟的客户端版本[默认0.00表示兼容xrgsu]</translation>
     </message>
     <message>
-        <source>Show balloon message on system tray</source>
-        <translation type="obsolete">在系统托盘显示气泡通知</translation>
+        <location filename="../src/configwindow.cpp" line="238"/>
+        <source>System Notification:</source>
+        <translation>显示系统通知:</translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="239"/>
+        <source>Seconds to display system notification, letters to no show</source>
+        <translation>显示系统通知的时间，字母表示不显示</translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="242"/>
+        <source>s [0(no) 1-20(yes)]</source>
+        <translation>秒[0(不显示) 1-20(显示)]</translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="262"/>
+        <source>Show balloon message on system tray when minimized</source>
+        <translation>最小化时在系统托盘显示气泡通知</translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="268"/>
+        <source>Enable transparent authentication window</source>
+        <translation>使用透明认证消息窗口</translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="298"/>

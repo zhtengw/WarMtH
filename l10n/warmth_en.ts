@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="en_US">
 <context>
     <name>AboutWindow</name>
     <message>
@@ -42,11 +42,6 @@
 <context>
     <name>AuthMsgWindow</name>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="52"/>
-        <source>&lt;font size=5&gt;&lt;b&gt;Authentication&lt;/b&gt;&lt;/font&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/authmsgwindow.cpp" line="32"/>
         <location filename="../src/authmsgwindow.cpp" line="257"/>
         <source>&amp;Exit</source>
@@ -69,6 +64,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/authmsgwindow.cpp" line="52"/>
+        <source>&lt;font size=5&gt;&lt;b&gt;Authentication&lt;/b&gt;&lt;/font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/authmsgwindow.cpp" line="248"/>
         <source>WarMtH</source>
         <translation type="unfinished"></translation>
@@ -87,6 +87,16 @@
 <context>
     <name>ConfigWindow</name>
     <message>
+        <location filename="../src/configwindow.cpp" line="34"/>
+        <source>&amp;Arguments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="35"/>
+        <source>A&amp;pplication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/configwindow.cpp" line="39"/>
         <source>Confir&amp;m</source>
         <translation type="unfinished"></translation>
@@ -99,16 +109,6 @@
     <message>
         <location filename="../src/configwindow.cpp" line="54"/>
         <source>Netcard:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="34"/>
-        <source>&amp;Arguments</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="35"/>
-        <source>A&amp;pplication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -142,53 +142,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/configwindow.cpp" line="239"/>
-        <source>Seconds to display system notification, letters to no show</source>
+        <location filename="../src/configwindow.cpp" line="102"/>
+        <source>DHCP type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/configwindow.cpp" line="103"/>
         <source>Set the type of DHCP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="122"/>
-        <source>Seconds to wait for authentication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="146"/>
-        <source>Times limit for failure[0 means no limit]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="167"/>
-        <source>Seconds to wait on failure</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="191"/>
-        <source>Interval between sending two heartbeat packages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="215"/>
-        <source>The version of authentification client to imitate[default to 0.00, compatible with xrgsu]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="238"/>
-        <source>System Notification:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="242"/>
-        <source>s [0(no) 1-20(yes)]</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/configwindow.cpp" line="102"/>
-        <source>DHCP type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -217,6 +177,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/configwindow.cpp" line="122"/>
+        <source>Seconds to wait for authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/configwindow.cpp" line="125"/>
         <location filename="../src/configwindow.cpp" line="170"/>
         <location filename="../src/configwindow.cpp" line="194"/>
@@ -229,8 +194,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/configwindow.cpp" line="146"/>
+        <source>Times limit for failure[0 means no limit]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/configwindow.cpp" line="166"/>
         <source>Wait on failure timeout:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="167"/>
+        <source>Seconds to wait on failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -239,8 +214,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/configwindow.cpp" line="191"/>
+        <source>Interval between sending two heartbeat packages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/configwindow.cpp" line="214"/>
         <source>Client Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="215"/>
+        <source>The version of authentification client to imitate[default to 0.00, compatible with xrgsu]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="238"/>
+        <source>System Notification:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="239"/>
+        <source>Seconds to display system notification, letters to no show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/configwindow.cpp" line="242"/>
+        <source>s [0(no) 1-20(yes)]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
