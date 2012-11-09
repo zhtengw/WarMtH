@@ -29,9 +29,9 @@
 AuthMsgWindow::AuthMsgWindow(QWidget *parent)
         : QDialog(parent)
 {
-    exitButton = new QPushButton(tr("&Exit"));
-    miniButton = new QPushButton(tr("&Minimize"));
-    reauthButton = new QPushButton(tr("Re-&authenticate"));
+    exitButton = new QPushButton(_("&Exit"));
+    miniButton = new QPushButton(_("&Minimize"));
+    reauthButton = new QPushButton(_("Re-&authenticate"));
     authMsg = new QTextEdit;
     args = new QStringList;
     sysTrayIcon = new QSystemTrayIcon(QIcon(":/warmth.png"));
@@ -47,9 +47,9 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
 
     authMsg->setReadOnly(true);
 
-    setWindowTitle(tr("Authentication"));
+    setWindowTitle(_("Authentication"));
 
-    msgTitle = new QLabel(tr("<font size=5><b>Authentication</b></font>"));
+    msgTitle = new QLabel(_("<font size=5><b>Authentication</b></font>"));
 
 
     connect(exitButton, SIGNAL(clicked()), this, SLOT(exitClicked()));
@@ -62,7 +62,6 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
     connect(backend, SIGNAL(readyReadStandardOutput()), this, SLOT(readresult()));
     //show reauthenticate button when authenticate fail
     connect(backend,SIGNAL(finished(int)),this,SLOT(changeButton(int)));
-
 
 }
 
@@ -243,23 +242,23 @@ void AuthMsgWindow::showMessage()
     QStringList allMessage=QString(authMsg->toPlainText()).split("\n",QString::SkipEmptyParts);
     QStringList tempmsg = QStringList() << allMessage.at(allMessage.size()-2) << allMessage.last();
     QString message = tempmsg.join("\n");
-    sysTrayIcon->showMessage(tr("WarMtH"), message,QSystemTrayIcon::Information,2000);
+    sysTrayIcon->showMessage(_("WarMtH"), message,QSystemTrayIcon::Information,2000);
 }
 
 void AuthMsgWindow::trayActions()
 {
-    minimizeAction = new QAction(tr("&Minimize"), this);
+    minimizeAction = new QAction(_("&Minimize"), this);
     connect(minimizeAction, SIGNAL(triggered()), this, SLOT(hide()));
 
 
-    exitAction = new QAction(tr("&Exit"), this);
+    exitAction = new QAction(_("&Exit"), this);
     connect(exitAction, SIGNAL(triggered()), this, SLOT(exitClicked()));
 
-    restoreAction = new QAction(tr("&Restore"), this);
+    restoreAction = new QAction(_("&Restore"), this);
     connect(restoreAction, SIGNAL(triggered()), this, SLOT(showNormal()));
 
 
-    quitAction = new QAction(tr("&Quit"), this);
+    quitAction = new QAction(_("&Quit"), this);
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 }
 

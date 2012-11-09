@@ -31,6 +31,8 @@
 #include <QCheckBox>
 #include <QTabWidget>
 
+#include "l10n.h"
+
 class ConfigWindow : public QDialog
 {
     Q_OBJECT

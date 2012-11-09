@@ -1,17 +1,20 @@
 include_directories(${QT_INCLUDES})
 
-########### next target ###############
+INCLUDE(${QT_USE_FILE})
+ADD_DEFINITIONS(${QT_DEFINITIONS})
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+SET(SRC_LIST main.cpp mainwindow.cpp authmsgwindow.cpp configwindow.cpp aboutwindow.cpp)
+SET(HEAD_LIST mainwindow.h authmsgwindow.h configwindow.h aboutwindow.h)
 
-set(SRCS main.cpp mainwindow.cpp configwindow.cpp)
+SET(warmth_RESOURCES ../images/images.qrc)
 
-add_executable(gmentohust ${SRCS})
+QT4_ADD_RESOURCES(RESOURCES_QRC ${warmth_RESOURCES})
 
-#install(TARGETS gmentohust DESTINATION ${BIN_INSTALL_DIR})
+QT4_WRAP_CPP(MOC_SRCS ${HEAD_LIST})
+ADD_EXECUTABLE(warmth ${SRC_LIST} ${MOC_SRCS} ${RESOURCES_QRC})
 
-########### install files ###############
+TARGET_LINK_LIBRARIES(warmth ${QT_LIBRARIES})
 
-#install(FILES gmentohust.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
-
-#install_icons(${ICON_INSTALL_DIR})
-
+INSTALL(TARGETS warmth DESTINATION bin)
+INSTALL(FILES warmth.desktop DESTINATION share/applications)
 

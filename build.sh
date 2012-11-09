@@ -35,7 +35,7 @@
 
 PKGNAM=warmth
 #VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
-VERSION=${VERSION:-1.1}
+VERSION=${VERSION:-1.2}
 BUILD=${BUILD:-1}
 NUMJOBS=${NUMJOBS:" -j4 "}
 TAG=${TAG:-_aten}
@@ -120,10 +120,24 @@ make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG || exit 1
 
 cd ../
-lrelease l10n/*.ts
-qmake #WarMtH.pro
-make
-make install INSTALL_ROOT=$PKG
+
+## use qmake to build
+#lrelease l10n/*.ts
+#qmake #WarMtH.pro
+#make
+#make install INSTALL_ROOT=$PKG
+
+## use cmake to build
+( mkdir build \
+  && cd build \
+     &&  cmake .. \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    && make  \
+&& make install DESTDIR=$PKG )
 
 chmod 4755 $PKG/usr/bin/mentohust
 mv $PKG/etc/mentohust.conf $PKG/etc/mentohust.conf.new

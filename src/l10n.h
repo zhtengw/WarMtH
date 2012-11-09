@@ -16,52 +16,17 @@
  *  You should have received a copy of the GNU General Public License      *
  *  along with WarMtH.  If not, see <http://www.gnu.org/licenses/>.        *
  ***************************************************************************/
-#ifndef ABOUTWINDOW_H
-#define ABOUTWINDOW_H
+#ifndef L10N_H
+#define L10N_H
 
-#include <QDialog>
-#include <QtGlobal>
-#include <QMessageBox>
-#include <QTextEdit>
-#include <QProcess>
-#include <QSettings>
-#include <QPushButton>
-#include <QLabel>
-#include <QLayout>
-#include <QCheckBox>
-#include <QTabWidget>
-#include "l10n.h"
+#include <libintl.h>
+#include <locale.h>
 
-class AboutWindow : public QDialog
-{
-    Q_OBJECT
-
-public:
-    AboutWindow(QWidget *parent = 0);
-    ~AboutWindow();
+#define LOCALEDIR "/usr/share/locale/"
+#define PACKAGE "warmth"
 
 
-    friend class MainWindow;
+#define _(String) QString::fromUtf8(gettext(String))
 
-private:
-    QTabWidget *aboutTabs;
-    QPushButton *okButton;
-};
 
-class MentohustPage : public QWidget
-{
-    Q_OBJECT
-
-public:
-    MentohustPage(QWidget *parent = 0);
-    ~MentohustPage();
-};
-
-class WarmthPage : public QWidget
-{
-public:
-    WarmthPage(QWidget *parent = 0);
-    ~WarmthPage();
-};
-
-#endif // ABOUTWINDOW_H
+#endif /* L10N_H */

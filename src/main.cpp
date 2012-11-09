@@ -21,6 +21,7 @@
 #include <QLibraryInfo>
 
 #include "mainwindow.h"
+#include "l10n.h"
 
 int main(int argc, char *argv[])
 {
@@ -32,10 +33,14 @@ int main(int argc, char *argv[])
                       QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     app.installTranslator(&qtTranslator);
 
-    QTranslator warmthTranslator;
-    warmthTranslator.load("warmth_" + QLocale::system().name(),"/usr/share/warmth/l10n");
-    app.installTranslator(&warmthTranslator);
+    //QTranslator warmthTranslator;
+    //warmthTranslator.load("warmth_" + QLocale::system().name(),"/usr/share/warmth/l10n");
+    //app.installTranslator(&warmthTranslator);
 
+    setlocale(LC_ALL,"");
+    bindtextdomain(PACKAGE, LOCALEDIR);
+    textdomain (PACKAGE);
+    
     QCoreApplication::setOrganizationName("WarMtH");
     QCoreApplication::setApplicationName("warmth");
     MainWindow *mainWD = new MainWindow;

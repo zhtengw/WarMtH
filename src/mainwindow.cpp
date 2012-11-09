@@ -30,29 +30,29 @@ MainWindow::MainWindow(QWidget *parent)
 
     QSettings setting("WarMtH","warmth");
 
-    netid = new QLabel(tr("&NetID:"));
+    netid = new QLabel(_("&NetID:"));
     idEdit = new QLineEdit;
     netid->setBuddy(idEdit);
     idEdit->setMaximumWidth(140);
     idEdit->setText(setting.value("netid","").toString());
 
-    passwd = new QLabel(tr("&Password:"));
+    passwd = new QLabel(_("&Password:"));
     pdEdit = new QLineEdit;
     pdEdit->setEchoMode(QLineEdit::Password);
     passwd->setBuddy(pdEdit);
     pdEdit->setMaximumWidth(140);
     pdEdit->setText(getXorEncryptDecrypt(setting.value("password","").toString(),111));
 
-    rembCheckBox = new QCheckBox(tr("&Remember for next authification"));
+    rembCheckBox = new QCheckBox(_("&Remember for next authification"));
 
-    authButton = new QPushButton(tr("&Authenticate"));
+    authButton = new QPushButton(_("&Authenticate"));
     //authButton->setDefault(true);
     authButton->setEnabled(false);
     authButton->setFixedSize(65,65);
 
-    closeButton = new QPushButton(tr("Clos&e"));
-    configButton = new QPushButton(tr("&Configure"));
-    aboutButton = new QPushButton(tr("Abou&t"));
+    closeButton = new QPushButton(_("Clos&e"));
+    configButton = new QPushButton(_("&Configure"));
+    aboutButton = new QPushButton(_("Abou&t"));
 
     setAttribute(Qt::WA_DeleteOnClose,true);
     createCfgWd();
@@ -110,7 +110,7 @@ MainWindow::MainWindow(QWidget *parent)
     setLayout(mainLayout);
 
     //resize(100,200);
-    setWindowTitle(tr("WarMtH"));
+    setWindowTitle(_("WarMtH"));
     //setFixedHeight(sizeHint().height());
 
 }

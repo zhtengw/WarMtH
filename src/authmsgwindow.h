@@ -29,6 +29,7 @@
 #include <QMenu>
 #include <QBoxLayout>
 #include <QLabel>
+#include "l10n.h"
 
 class AuthMsgWindow : public QDialog
 {
@@ -76,7 +77,7 @@ private:
     QAction *quitAction;
     bool    trayMsg;
     bool    transparent;
-    //QProcess *exitMtH;
+    //QProcess *exitMTH;
 };
 
 #endif // AUTHMSGWINDOW_H

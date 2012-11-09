@@ -31,13 +31,13 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     argsPage = new QWidget;
     appPage = new QWidget;
 
-    configTabs->addTab(argsPage,tr("&Arguments"));
-    configTabs->addTab(appPage,tr("A&pplication"));
+    configTabs->addTab(argsPage,_("&Arguments"));
+    configTabs->addTab(appPage,_("A&pplication"));
 
     ////**Widgets on configuration window**////
     /* 1. Confirm and Exit buttons */
-    confirmButton = new QPushButton(tr("Confir&m"));
-    cancelButton = new QPushButton(tr("Canc&el"));
+    confirmButton = new QPushButton(_("Confir&m"));
+    cancelButton = new QPushButton(_("Canc&el"));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelClicked()));
     connect(confirmButton, SIGNAL(clicked()), this, SLOT(confirmClicked()));
 
@@ -51,10 +51,10 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     //**Widgets on arguments page**//
     /* 2. Net cards selection */
     CVNetCard = new QString;
-    netCardName = new QLabel(tr("Netcard:"));
+    netCardName = new QLabel(_("Netcard:"));
     netCardSelect = new QComboBox;
     netCardArg = new QStringList;
-    netCardName->setToolTip(tr("Select the network card you used"));
+    netCardName->setToolTip(_("Select the network card you used"));
     QHBoxLayout *netCardLayout = new QHBoxLayout;
     netCardLayout->addWidget(netCardName);
     netCardLayout->addWidget(netCardSelect);
@@ -80,12 +80,12 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     /* 3. Mulcast address selection */
     //CVMulAdr=0;
-    mulCastAdrName = new QLabel(tr("Mulcast Address:"));
-    mulCastAdrName->setToolTip(tr("Mulcast Address"));
+    mulCastAdrName = new QLabel(_("Mulcast Address:"));
+    mulCastAdrName->setToolTip(_("Mulcast Address"));
     mulCastAdr = new QComboBox;
     mulCastAdrArg = new QStringList;
     //the index for Mulcast Address is: 0. standard 1. ruijie 2. saier
-    mulCastAdr->insertItems( 0,QStringList()<<tr("standard")<<tr("ruijie")<< tr("saier"));
+    mulCastAdr->insertItems( 0,QStringList()<<_("standard")<<_("ruijie")<< _("saier"));
 
     QHBoxLayout *mulCastLayout = new QHBoxLayout;
     mulCastLayout->addWidget(mulCastAdrName);
@@ -99,12 +99,12 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     /* 5. DHCP type */
     //CVDhcpType=0;
-    dhcpTypeName = new QLabel(tr("DHCP type:"));
-    dhcpTypeName->setToolTip(tr("Set the type of DHCP"));
+    dhcpTypeName = new QLabel(_("DHCP type:"));
+    dhcpTypeName->setToolTip(_("Set the type of DHCP"));
     dhcpType = new QComboBox;
     dhcpTypeArg = new QStringList;
     //the index for DHCP type is: 0(not in used) 1(secondary authenticate) 2(post authenticate) 3(pre authenticate)
-    dhcpType->insertItems( 0,QStringList()<<tr("not in used")<<tr("secondary authenticate")<< tr("post authenticate")<<tr("pre authenticate"));
+    dhcpType->insertItems( 0,QStringList()<<_("not in used")<<_("secondary authenticate")<< _("post authenticate")<<_("pre authenticate"));
 
     QHBoxLayout *dhcpTypeLayout = new QHBoxLayout;
     dhcpTypeLayout->addWidget(dhcpTypeName);
@@ -118,11 +118,11 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     /* 6. authenticate timeout */
     CVAuthTO = new QString;
-    authTimeOutName= new QLabel(tr("Authenticate timeout:"));
-    authTimeOutName->setToolTip(tr("Seconds to wait for authentication"));
+    authTimeOutName= new QLabel(_("Authenticate timeout:"));
+    authTimeOutName->setToolTip(_("Seconds to wait for authentication"));
     authTimeOut = new QLineEdit;
     authTimeOutArg = new QStringList;
-    QLabel *unitTO = new QLabel(tr("s"));
+    QLabel *unitTO = new QLabel(_("s"));
 
     //line edit width
     authTimeOut->setMaximumWidth(40);
@@ -142,8 +142,8 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     /* 7. max failure times */
     CVMaxFT = new QString;
-    maxFailTimesName= new QLabel(tr("Max failure times:"));
-    maxFailTimesName->setToolTip(tr("Times limit for failure[0 means no limit]"));
+    maxFailTimesName= new QLabel(_("Max failure times:"));
+    maxFailTimesName->setToolTip(_("Times limit for failure[0 means no limit]"));
     maxFailTimes = new QLineEdit;
     maxFailTimesArg = new QStringList;
 
@@ -163,11 +163,11 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     /* 8. wait on failure timeout */
     CVWaitFTO = new QString;
-    waitFailTimeOutName= new QLabel(tr("Wait on failure timeout:"));
-    waitFailTimeOutName->setToolTip(tr("Seconds to wait on failure"));
+    waitFailTimeOutName= new QLabel(_("Wait on failure timeout:"));
+    waitFailTimeOutName->setToolTip(_("Seconds to wait on failure"));
     waitFailTimeOut = new QLineEdit;
     waitFailTimeOutArg = new QStringList;
-    QLabel *unitFTO = new QLabel(tr("s"),this);
+    QLabel *unitFTO = new QLabel(_("s"),this);
 
     //line edit width
     waitFailTimeOut->setMaximumWidth(40);
@@ -187,11 +187,11 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     /* 9. heartbeat timeout */
     CVHeatBTO = new QString;
-    heartbeatTimeOutName= new QLabel(tr("Heartbeat timeout:"));
-    heartbeatTimeOutName->setToolTip(tr("Interval between sending two heartbeat packages"));
+    heartbeatTimeOutName= new QLabel(_("Heartbeat timeout:"));
+    heartbeatTimeOutName->setToolTip(_("Interval between sending two heartbeat packages"));
     heartbeatTimeOut = new QLineEdit;
     heartbeatTimeOutArg = new QStringList;
-    QLabel *unitHTO = new QLabel(tr("s"),this);
+    QLabel *unitHTO = new QLabel(_("s"),this);
 
     //line edit width
     heartbeatTimeOut->setMaximumWidth(40);
@@ -211,8 +211,8 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     /* 10. imitated client version */
     CVClientVer= new QString;
-    clientVersionName= new QLabel(tr("Client Version:"));
-    clientVersionName->setToolTip(tr("The version of authentification client to imitate[default to 0.00, compatible with xrgsu]"));
+    clientVersionName= new QLabel(_("Client Version:"));
+    clientVersionName->setToolTip(_("The version of authentification client to imitate[default to 0.00, compatible with xrgsu]"));
     clientVersion = new QLineEdit;
     clientVersionArg = new QStringList;
 
@@ -235,11 +235,11 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     //**Widgets on application page**//
     /* 4. time to display notification */
     CVDispNotif = new QString;
-    dispNotif = new QLabel(tr("System Notification:"));
-    dispNotif->setToolTip(tr("Seconds to display system notification, letters to no show"));
+    dispNotif = new QLabel(_("System Notification:"));
+    dispNotif->setToolTip(_("Seconds to display system notification, letters to no show"));
     dispNotifTime = new QLineEdit;
     dispNotifArg = new QStringList;
-    QLabel *unitdis = new QLabel(tr("s [0(no) 1-20(yes)]"));
+    QLabel *unitdis = new QLabel(_("s [0(no) 1-20(yes)]"));
 
     //line edit width
     dispNotifTime->setMaximumWidth(22);
@@ -259,13 +259,13 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     connect(dispNotifTime,SIGNAL(textChanged(QString)), this, SLOT(saveDispNotif(QString)));
 
     /* 11. auto show system tray message */
-    autoTrayMsg = new QCheckBox(tr("Show balloon message on system tray when minimized"));
+    autoTrayMsg = new QCheckBox(_("Show balloon message on system tray when minimized"));
     autoTrayMsg->setChecked((setting.value("traymsg",1).toInt())==1);
     CVTrayMsg=setting.value("traymsg",1).toInt();
     connect(autoTrayMsg,SIGNAL(clicked()),this,SLOT(saveTrayMsg()));
 
     /* 12. enable transparent authentication message window or not */
-    transAuthWD = new QCheckBox(tr("Enable transparent authentication window"));
+    transAuthWD = new QCheckBox(_("Enable transparent authentication window"));
     transAuthWD->setChecked((setting.value("transparentauthwd",1).toInt())==1);
     CVTransparent=setting.value("transparentauthwd",1).toInt();
     connect(transAuthWD,SIGNAL(clicked()),this,SLOT(saveTransAuthWD()));
@@ -295,7 +295,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     setLayout(mainLayout);
 
-    setWindowTitle(tr("Configuration"));
+    setWindowTitle(_("Configuration"));
     setFixedHeight(sizeHint().height());
 
     args=new QStringList;
@@ -405,7 +405,7 @@ void ConfigWindow::saveDispNotif(const QString time)
 {
     if(time.toInt()>20)
     {
-        QMessageBox::warning(this,tr("Out of Range"),tr("The second value should be 0-20."));
+        QMessageBox::warning(this,_("Out of Range"),_("The second value should be 0-20."));
     }
     else
     {

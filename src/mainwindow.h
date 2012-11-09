@@ -30,6 +30,7 @@
 
 #include "authmsgwindow.h"
 #include "configwindow.h"
+#include "l10n.h"
 
 
 class MainWindow : public QDialog //QMainWindow
