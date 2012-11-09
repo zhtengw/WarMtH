@@ -43,13 +43,13 @@
     <name>AuthMsgWindow</name>
     <message>
         <location filename="../src/authmsgwindow.cpp" line="32"/>
-        <location filename="../src/authmsgwindow.cpp" line="257"/>
+        <location filename="../src/authmsgwindow.cpp" line="255"/>
         <source>&amp;Exit</source>
         <translation>退出认证(&amp;E)</translation>
     </message>
     <message>
         <location filename="../src/authmsgwindow.cpp" line="33"/>
-        <location filename="../src/authmsgwindow.cpp" line="253"/>
+        <location filename="../src/authmsgwindow.cpp" line="251"/>
         <source>&amp;Minimize</source>
         <translation>最小化(&amp;M)</translation>
     </message>
@@ -69,17 +69,17 @@
         <translation>&lt;font size=5&gt;&lt;b&gt;认证消息&lt;/b&gt;&lt;/font&gt;</translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="248"/>
+        <location filename="../src/authmsgwindow.cpp" line="246"/>
         <source>WarMtH</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="260"/>
+        <location filename="../src/authmsgwindow.cpp" line="258"/>
         <source>&amp;Restore</source>
         <translation>恢复窗口(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="264"/>
+        <location filename="../src/authmsgwindow.cpp" line="262"/>
         <source>&amp;Quit</source>
         <translation>离开(&amp;Q)</translation>
     </message>
@@ -277,37 +277,37 @@
         <translation>&amp;NetID:</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="38"/>
+        <location filename="../src/mainwindow.cpp" line="39"/>
         <source>&amp;Password:</source>
         <translation>密码(&amp;Q):</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="44"/>
+        <location filename="../src/mainwindow.cpp" line="46"/>
         <source>&amp;Remember for next authification</source>
         <translation>下次认证时记住此密码(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="46"/>
+        <location filename="../src/mainwindow.cpp" line="48"/>
         <source>&amp;Authenticate</source>
         <translation>认证(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="50"/>
+        <location filename="../src/mainwindow.cpp" line="53"/>
         <source>Clos&amp;e</source>
         <translation>关闭(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="51"/>
+        <location filename="../src/mainwindow.cpp" line="54"/>
         <source>&amp;Configure</source>
         <translation>配置(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="52"/>
+        <location filename="../src/mainwindow.cpp" line="55"/>
         <source>Abou&amp;t</source>
         <translation>关于(&amp;T）</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="111"/>
+        <location filename="../src/mainwindow.cpp" line="113"/>
         <source>WarMtH</source>
         <translation></translation>
     </message>
@@ -324,8 +324,8 @@
     <name>WarmthPage</name>
     <message>
         <location filename="../src/aboutwindow.cpp" line="105"/>
-        <source>&lt;p&gt;&lt;big&gt;A GUI front end for MentoHust&lt;/big&gt;&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2012 &lt;address&gt;Aten Zhang&lt;/address&gt;&lt;/p&gt;&lt;p&gt;Homepage: &lt;/p&gt;&lt;p&gt;&lt;a href=http://code.google.com/p/warmth&gt;http://code.google.com/p/warmth&lt;/a&gt;&lt;/p&gt;&lt;br /&gt;License: &lt;p&gt;&lt;a href=http://www.gnu.org/licenses/gpl.txt&gt;GNU General Public License Version 3&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;big&gt;MentoHust的图形前端&lt;/big&gt;&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2012 &lt;address&gt;Aten Zhang&lt;/address&gt;&lt;/p&gt;&lt;p&gt;项目主页: &lt;/p&gt;&lt;p&gt;&lt;a href=http://code.google.com/p/warmth&gt;http://code.google.com/p/warmth&lt;/a&gt;&lt;/p&gt;&lt;br /&gt;许可协议: &lt;p&gt;&lt;a href=http://www.gnu.org/licenses/gpl.txt&gt;GNU通用公共许可协议第3版&lt;/a&gt;&lt;/p&gt;</translation>
+        <source>&lt;p&gt;&lt;big&gt;A GUI front end for MentoHust&lt;/big&gt;&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2012 &lt;address&gt;Aten Zhang&lt;/address&gt;&lt;/p&gt;&lt;p&gt;Homepage: &lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://code.google.com/p/warmth&quot;&gt; http://code.google.com/p/warmth &lt;/a&gt;&lt;/p&gt;&lt;br /&gt;License: &lt;p&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl.txt&quot;&gt; GNU General Public License Version 3 &lt;/a&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;big&gt;MentoHust的图形前端&lt;/big&gt;&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2012 &lt;address&gt;Aten Zhang&lt;/address&gt;&lt;/p&gt;&lt;p&gt;项目主页: &lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://code.google.com/p/warmth&quot;&gt; http://code.google.com/p/warmth &lt;/a&gt;&lt;/p&gt;&lt;br /&gt;许可协议: &lt;p&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl.txt&quot;&gt; GNU通用公共许可协议第3版 &lt;/a&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 </TS>

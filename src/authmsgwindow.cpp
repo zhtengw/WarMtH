@@ -35,7 +35,7 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
     authMsg = new QTextEdit;
     args = new QStringList;
     sysTrayIcon = new QSystemTrayIcon(QIcon(":/warmth.png"));
-    setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_DeleteOnClose,true);
 
     trayActions();
     createTrayMenu();
@@ -57,11 +57,12 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
     connect(reauthButton,SIGNAL(clicked()),this, SLOT(reAuth()));
 
     backendName = new QString;
-    backend = new QProcess(this);
+    backend = new QProcess(this);//get runtime error when delete backend in destructor
     backend->setProcessChannelMode(QProcess::MergedChannels);
     connect(backend, SIGNAL(readyReadStandardOutput()), this, SLOT(readresult()));
     //show reauthenticate button when authenticate fail
     connect(backend,SIGNAL(finished(int)),this,SLOT(changeButton(int)));
+
 
 }
 
@@ -80,7 +81,6 @@ AuthMsgWindow::~AuthMsgWindow()
     delete quitAction;    
     delete trayIconMenu;
     delete sysTrayIcon;
-    //delete backend;
     delete backendName;
 }
 
@@ -107,7 +107,7 @@ void AuthMsgWindow::displayWD()
         resize(358,250);
 
 
-        QVBoxLayout *mainLayout = new QVBoxLayout;
+        QVBoxLayout *mainLayout = new QVBoxLayout(this);
         mainLayout->addWidget(authMsg);
         mainLayout->addLayout(buttons);
         setLayout(mainLayout);
@@ -146,7 +146,7 @@ void AuthMsgWindow::displayWD()
         leftLayout->addLayout(titleLayout);
         leftLayout->addLayout(msgLayout);
 
-        QHBoxLayout *mainLayout = new QHBoxLayout;
+        QHBoxLayout *mainLayout = new QHBoxLayout(this);
         mainLayout->addLayout(leftLayout);
         mainLayout->addLayout(buttons);
         setLayout(mainLayout);
@@ -183,11 +183,9 @@ void AuthMsgWindow::setArgs(const QString &id, const QString &pd)
 
 void AuthMsgWindow::exitClicked()
 {
-    QProcess *exitMTH = new QProcess;
-    exitMTH->start("mentohust -k");
-
-    //if(!this->isHidden())this->hide();
-    close();
+    backend->kill();
+    backend->start(*backendName,QStringList()<<"-k");
+    if(backend->waitForFinished(-1))close();
 }
 
 void AuthMsgWindow::miniClicked()

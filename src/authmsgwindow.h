@@ -76,6 +76,7 @@ private:
     QAction *quitAction;
     bool    trayMsg;
     bool    transparent;
+    //QProcess *exitMtH;
 };
 
 #endif // AUTHMSGWINDOW_H

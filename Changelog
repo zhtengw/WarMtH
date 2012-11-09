@@ -1,3 +1,12 @@
+Nov/9/2012
+  1. now all the pointers can be released when the application close
+  2. a little change of mainwindow layout
+  3. could not get rid of the warning "QProcess::start: Process is already running"
+
+Nov/8/2012
+  1. fix a bug the could not set heartbeattimeout when the configura changed
+  2. now all the pointers except the authmsgwindow can be released when the application close
+ 
 Nov/6/2012 
   1. enable changing the apperance of the authentication window in runtime (add a configura option instead of setting during pre-process)
   2. complete the destructor, delete the pointers of class members (the child widgets will also be deleted when delete the parent widget, so I got runtime error at a time because I delete the child widget later. Then I only need to delete the parent widget)

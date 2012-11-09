@@ -43,13 +43,13 @@
     <name>AuthMsgWindow</name>
     <message>
         <location filename="../src/authmsgwindow.cpp" line="32"/>
-        <location filename="../src/authmsgwindow.cpp" line="257"/>
+        <location filename="../src/authmsgwindow.cpp" line="255"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/authmsgwindow.cpp" line="33"/>
-        <location filename="../src/authmsgwindow.cpp" line="253"/>
+        <location filename="../src/authmsgwindow.cpp" line="251"/>
         <source>&amp;Minimize</source>
         <translation type="unfinished"></translation>
     </message>
@@ -69,17 +69,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="248"/>
+        <location filename="../src/authmsgwindow.cpp" line="246"/>
         <source>WarMtH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="260"/>
+        <location filename="../src/authmsgwindow.cpp" line="258"/>
         <source>&amp;Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/authmsgwindow.cpp" line="264"/>
+        <location filename="../src/authmsgwindow.cpp" line="262"/>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -277,37 +277,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="38"/>
+        <location filename="../src/mainwindow.cpp" line="39"/>
         <source>&amp;Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="44"/>
+        <location filename="../src/mainwindow.cpp" line="46"/>
         <source>&amp;Remember for next authification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="46"/>
+        <location filename="../src/mainwindow.cpp" line="48"/>
         <source>&amp;Authenticate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="50"/>
+        <location filename="../src/mainwindow.cpp" line="53"/>
         <source>Clos&amp;e</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="51"/>
+        <location filename="../src/mainwindow.cpp" line="54"/>
         <source>&amp;Configure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="52"/>
+        <location filename="../src/mainwindow.cpp" line="55"/>
         <source>Abou&amp;t</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="111"/>
+        <location filename="../src/mainwindow.cpp" line="113"/>
         <source>WarMtH</source>
         <translation type="unfinished"></translation>
     </message>
@@ -324,7 +324,7 @@
     <name>WarmthPage</name>
     <message>
         <location filename="../src/aboutwindow.cpp" line="105"/>
-        <source>&lt;p&gt;&lt;big&gt;A GUI front end for MentoHust&lt;/big&gt;&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2012 &lt;address&gt;Aten Zhang&lt;/address&gt;&lt;/p&gt;&lt;p&gt;Homepage: &lt;/p&gt;&lt;p&gt;&lt;a href=http://code.google.com/p/warmth&gt;http://code.google.com/p/warmth&lt;/a&gt;&lt;/p&gt;&lt;br /&gt;License: &lt;p&gt;&lt;a href=http://www.gnu.org/licenses/gpl.txt&gt;GNU General Public License Version 3&lt;/a&gt;&lt;/p&gt;</source>
+        <source>&lt;p&gt;&lt;big&gt;A GUI front end for MentoHust&lt;/big&gt;&lt;/p&gt;&lt;p&gt;Copyright &amp;copy; 2012 &lt;address&gt;Aten Zhang&lt;/address&gt;&lt;/p&gt;&lt;p&gt;Homepage: &lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://code.google.com/p/warmth&quot;&gt; http://code.google.com/p/warmth &lt;/a&gt;&lt;/p&gt;&lt;br /&gt;License: &lt;p&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl.txt&quot;&gt; GNU General Public License Version 3 &lt;/a&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

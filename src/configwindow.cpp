@@ -22,7 +22,7 @@
 ConfigWindow::ConfigWindow(QWidget *parent)
     : QDialog(parent)
 {
-    setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_DeleteOnClose,true);
     // settings
     QSettings setting("WarMtH","warmth");
 
@@ -167,7 +167,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     waitFailTimeOutName->setToolTip(tr("Seconds to wait on failure"));
     waitFailTimeOut = new QLineEdit;
     waitFailTimeOutArg = new QStringList;
-    QLabel *unitFTO = new QLabel(tr("s"));
+    QLabel *unitFTO = new QLabel(tr("s"),this);
 
     //line edit width
     waitFailTimeOut->setMaximumWidth(40);
@@ -191,7 +191,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     heartbeatTimeOutName->setToolTip(tr("Interval between sending two heartbeat packages"));
     heartbeatTimeOut = new QLineEdit;
     heartbeatTimeOutArg = new QStringList;
-    QLabel *unitHTO = new QLabel(tr("s"));
+    QLabel *unitHTO = new QLabel(tr("s"),this);
 
     //line edit width
     heartbeatTimeOut->setMaximumWidth(40);
@@ -207,7 +207,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     heartbeatTimeOutLayout->addWidget(heartbeatTimeOut);
     heartbeatTimeOutLayout->addWidget(unitHTO);
 
-    connect(waitFailTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveHeartbeatTimeOut(QString)));
+    connect(heartbeatTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveHeartbeatTimeOut(QString)));
 
     /* 10. imitated client version */
     CVClientVer= new QString;
@@ -289,7 +289,7 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     appPageLayout->addStretch();
     appPage->setLayout(appPageLayout);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout;
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(configTabs);
     mainLayout->addLayout(buttonLayout);
 

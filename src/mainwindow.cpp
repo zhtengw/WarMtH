@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QDialog(parent)
 {
 
-     QSettings setting("WarMtH","warmth");
+    QSettings setting("WarMtH","warmth");
 
     netid = new QLabel(tr("&NetID:"));
     idEdit = new QLineEdit;
@@ -48,12 +48,13 @@ MainWindow::MainWindow(QWidget *parent)
     authButton = new QPushButton(tr("&Authenticate"));
     //authButton->setDefault(true);
     authButton->setEnabled(false);
+    authButton->setFixedSize(65,65);
 
     closeButton = new QPushButton(tr("Clos&e"));
     configButton = new QPushButton(tr("&Configure"));
     aboutButton = new QPushButton(tr("Abou&t"));
 
-    this->setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_DeleteOnClose,true);
     createCfgWd();
     createAuthMW();
 
@@ -75,7 +76,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     QHBoxLayout *bottomLayout = new QHBoxLayout;
     bottomLayout->addStretch();
-    bottomLayout->addWidget(authButton);
     //bottomLayout->addStretch();
     bottomLayout->addWidget(closeButton);
     //bottomLayout->addStretch();
@@ -99,16 +99,17 @@ MainWindow::MainWindow(QWidget *parent)
     //topLayout->addStretch();
     topLayout->addLayout(leftLayout);
     topLayout->addLayout(rightLayout);
+    topLayout->addWidget(authButton);
     //topLayout->addStretch();
 
-    QVBoxLayout *mainLayout = new QVBoxLayout;
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addLayout(topLayout);
     mainLayout->addLayout(midLayout);
     mainLayout->addLayout(bottomLayout);
 
     setLayout(mainLayout);
 
-    resize(100,200);
+    //resize(100,200);
     setWindowTitle(tr("WarMtH"));
     //setFixedHeight(sizeHint().height());
 
@@ -126,26 +127,27 @@ MainWindow::~MainWindow()
     delete closeButton;
     delete configButton;
     delete aboutButton;
-    //delete authMW;
+    delete authMW;
     //delete confW;
 }
 
 void MainWindow::aboutMe()
 {
-    AboutWindow *aboutWD = new AboutWindow;
-    aboutWD->show();
+    AboutWindow *aboutWD = new AboutWindow(this);
+    aboutWD->exec();
 
 }
 
-void MainWindow::createAuthMW()
+void MainWindow::createAuthMW(int result)
 {
 
     authMW = new AuthMsgWindow;
     connect(authButton, SIGNAL(clicked()), this, SLOT(authClicked()));
     connect(authButton, SIGNAL(clicked()), this, SLOT(hide()));
-    //connect(authButton, SIGNAL(clicked()), authMW, SLOT(show()));
-    connect(authMW, SIGNAL(destroyed()), this, SLOT(show()));
-    connect(authMW, SIGNAL(destroyed()), this, SLOT(createAuthMW()));
+    connect(authMW, SIGNAL(finished(int)), this, SLOT(showMe(int)));
+    connect(authMW, SIGNAL(finished(int)), this, SLOT(createAuthMW(int)));
+
+    *authMW->backendName=QString("mentohust");
 
 
 }
@@ -159,14 +161,12 @@ void MainWindow::authClicked()
     {
         authMW->sysTrayIcon->show();
     }
-
     authMW->trayMsg = confW->autoTrayMsg->isChecked();
     authMW->transparent = confW->transAuthWD->isChecked();
     authMW->displayWD();
     authMW->setArgs(tempid, temppd);
     confW->setArgs();
     *authMW->args=*authMW->args<<*confW->args;
-    *authMW->backendName=QString("mentohust");
     authMW->backend->start(*authMW->backendName, *authMW->args);
 
     authMW->show();
@@ -181,9 +181,10 @@ void MainWindow::enableAuthButton(const QString &text)
 
 void MainWindow::createCfgWd()
 {
-    confW= new ConfigWindow;
+    confW= new ConfigWindow(this);
     connect(confW,SIGNAL(destroyed()),this,SLOT(createCfgWd()));
     connect(configButton, SIGNAL(clicked()), confW, SLOT(show()));
+
 }
 
 void MainWindow::showAndHideIcon()
@@ -235,4 +236,9 @@ QByteArray MainWindow::qstringToByte(const QString &strInfo)
   }
 
   return result;
+}
+
+void MainWindow::showMe(int result)
+{
+    this->show();
 }

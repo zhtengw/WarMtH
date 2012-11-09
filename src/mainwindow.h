@@ -44,13 +44,14 @@ public:
 //public slots:
 //    void authClicked();
 private slots:
-    void createAuthMW();
+    void createAuthMW(int result = 1);
     void authClicked();
     void enableAuthButton(const QString &text);
     void createCfgWd();
     void showAndHideIcon();
     void saveID(int state);
     void aboutMe();
+    void showMe(int result);
 
 private:
     //functions to encrypt and decrypt password
