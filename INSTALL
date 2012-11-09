@@ -24,10 +24,12 @@ warmth中已附带打过补丁的mentohust，安装前请先删除本机的mento
   
 接着编译warmth
   cd ../
-  qmake WarMtH.pro
+  mkdir build
+  cd build
+  cmake ..
   make
   sudo make install
-  这里make install时可以指定INSTALL_ROOT变量值为某目录，以方便打包。
+  这里make install时可以指定DESTDIR变量值为某目录，以方便打包。
   
 运行时要保证/usr/bin/mentohust的权限为4755，属主为root
   sudo chmod 4755 /usr/bin/mentohust
