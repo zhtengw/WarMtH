@@ -21,7 +21,7 @@
 #include <QLabel>
 #include "aboutwindow.h"
 
-#define VERSION "1.1"
+#define VERSION "1.2"
 
 AboutWindow::AboutWindow(QWidget *parent)
     :QDialog(parent)

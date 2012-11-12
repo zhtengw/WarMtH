@@ -19,13 +19,52 @@
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QSharedMemory>
+#include <QDebug>
 
 #include "mainwindow.h"
 #include "l10n.h"
+#include "qtsingleapplication/qtsingleapplication.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+  /* usr shared memory to implement single instance
+   
+    QApplication app(argc, argv);app.processEvents();
+
+    //---- Check for another instance code snippet ----
+
+    //GUID : Generated once for your application
+    // you could get one GUID here: http://www.guidgenerator.com/online-guid-generator.aspx
+    QSharedMemory shared("62d60669-bb94-4a94-88bb-b964890a7e04");
+
+    if( !shared.create( 512, QSharedMemory::ReadWrite) )
+    {
+      // For a GUI application, replace this by :
+      // QMessageBox msgBox;
+      //msgBox.setText( QObject::tr("Can't start more than one instance of the application.") );
+      //msgBox.setIcon( QMessageBox::Critical );
+      //msgBox.exec();
+
+      qWarning() << "Can't start more than one instance of the application.";
+
+      exit(0);
+    }
+    else {
+        qDebug() << "Application started successfully.";
+    }
+    //---- END OF Check for another instance code snippet ----
+    */
+  
+    QtSingleApplication app("warmth_1",argc, argv);
+  
+    if (app.sendMessage("raise_running_window"))
+    {
+      
+      return 0;
+      
+    }
+  
     app.setWindowIcon(QIcon(":/warmth.png"));
     app.setQuitOnLastWindowClosed(false);
     QTranslator qtTranslator;
@@ -43,8 +82,12 @@ int main(int argc, char *argv[])
     
     QCoreApplication::setOrganizationName("WarMtH");
     QCoreApplication::setApplicationName("warmth");
-    MainWindow *mainWD = new MainWindow;
-    mainWD->show();
+    
+    
+    MainWindow mainWD;// = new MainWindow;
+    app.setActivationWindow(&mainWD,true);
+    
+    mainWD.show();
 
     return app.exec();
 }

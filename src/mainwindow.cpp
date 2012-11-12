@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     rembCheckBox = new QCheckBox(_("&Remember for next authification"));
 
-    authButton = new QPushButton(_("&Authenticate"));
+    authButton = new QPushButton(_("&Auth."));
     //authButton->setDefault(true);
     authButton->setEnabled(false);
     authButton->setFixedSize(65,65);

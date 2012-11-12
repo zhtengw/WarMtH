@@ -36,7 +36,7 @@
 PKGNAM=warmth
 #VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 VERSION=${VERSION:-1.2}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 NUMJOBS=${NUMJOBS:" -j4 "}
 TAG=${TAG:-_aten}
 
@@ -141,13 +141,7 @@ cd ../
 
 chmod 4755 $PKG/usr/bin/mentohust
 mv $PKG/etc/mentohust.conf $PKG/etc/mentohust.conf.new
-# Add documentation:
-rm -fr $PKG/usr/share/doc
-mkdir -p $PKG/usr/doc/$PKGNAM-$VERSION
-cp -a AUTHORS ChangeLog README NEWS \
-  $PKG/usr/doc/$PKGNAM-$VERSION || true
-cat $SRCDIR/$(basename $0) > $PKG/usr/doc/$PKGNAM-$VERSION/$PKGNAM.SlackBuild
-chown -R root:root $PKG/usr/doc/$PKGNAM-$VERSION
+
 find $PKG/usr/doc -type f -exec chmod 644 {} \;
 
 # Strip binaries (if any):

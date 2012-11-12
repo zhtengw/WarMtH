@@ -41,6 +41,7 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    friend class QtSingleApplication;
 
 //public slots:
 //    void authClicked();

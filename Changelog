@@ -1,3 +1,6 @@
+Nov/12/2012
+  1. use qtsingleapplication to implement single instance
+  
 Nov/10/2012
   1. migrate from qmake to cmake
   2. use gettext for l10n instead
