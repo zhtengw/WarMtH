@@ -165,7 +165,8 @@ void AuthMsgWindow::readresult()
 {
     QTextCodec *data = QTextCodec::codecForName("UTF-8");
     QString result = data->toUnicode(backend->readAllStandardOutput());
-    authMsg->append(result);
+    
+    authMsg->append(result.trimmed()); //delete the whitespace from the start and the end
     if(this->isHidden()&&trayMsg)showMessage();
 
 }

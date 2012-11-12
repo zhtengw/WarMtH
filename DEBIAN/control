@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 7), autotools-dev, qt-sdk, autopoint, autoconf, get
 Standards-Version: 1.0
 Homepage: http://code.google.com/p/warmth/
 Package: warmth
-Version: 1.0-1
+Version: 1.2-2
 Architecture: all
 Depends: libpcap0.8 | libpcap0.9 | libpcap1.0 | libpcap1, libqt4-dev, libqtgui4
 Description: WarMtH (a GUI front end of MentoHUST)

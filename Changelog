@@ -1,5 +1,6 @@
 Nov/12/2012
   1. use qtsingleapplication to implement single instance
+  2. use trimmed() in authMsg to delete the whitespace from the start and the end, so that there won't be many spaceline in authmsgwindow
   
 Nov/10/2012
   1. migrate from qmake to cmake
