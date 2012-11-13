@@ -50,7 +50,7 @@ AboutWindow::AboutWindow(QWidget *parent)
     aboutTabs->addTab(new WarmthPage(this),_("&About"));
     aboutTabs->addTab(new MentohustPage(this),_("About &MentoHust"));
 
-    setAttribute(Qt::WA_DeleteOnClose,true);
+    //setAttribute(Qt::WA_DeleteOnClose,true);
 
     connect(okButton, SIGNAL(clicked()), this, SLOT(close()));
     QGridLayout *topLayout = new QGridLayout;

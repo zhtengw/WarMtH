@@ -133,8 +133,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::aboutMe()
 {
-    AboutWindow *aboutWD = new AboutWindow(this);
-    aboutWD->exec();
+    AboutWindow aboutWD;// = new AboutWindow(this);
+    aboutWD.exec();
 
 }
 

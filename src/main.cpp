@@ -84,10 +84,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("warmth");
     
     
-    MainWindow mainWD;// = new MainWindow;
-    app.setActivationWindow(&mainWD,true);
+    MainWindow *mainWD = new MainWindow;
+    app.setActivationWindow(mainWD,true);
     
-    mainWD.show();
+    mainWD->show();
 
     return app.exec();
 }
