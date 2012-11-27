@@ -20,7 +20,7 @@ warmth中已附带打过补丁的mentohust，安装前请先删除本机的mento
    rpm -bb [--nodeps] WarMtH/warmth.spec
 打包好的rpm包位于YOUR/rpmbuilddir/RPMS/yourarch/目录下，使用rpm -i安装。
 
-3. 其它发行版请手动编译安装：
+4. 其它发行版请手动编译安装：
 首先编译mentohust
   patch -Np0 -i mentohust-linebuf.patch
   cd mentohust
