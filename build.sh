@@ -113,8 +113,7 @@ sh autogen.sh
 ./configure \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --mandir=/usr/man \
-  --build=$ARCH-slackware-linux 
+  --mandir=/usr/man  
 
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG || exit 1
