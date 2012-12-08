@@ -23,6 +23,7 @@
 #include <QBitmap>
 #include <QPainter>
 #include <QGridLayout>
+#include <iostream>
 
 #include "authmsgwindow.h"
 
@@ -62,6 +63,7 @@ AuthMsgWindow::AuthMsgWindow(QWidget *parent)
     connect(backend, SIGNAL(readyReadStandardOutput()), this, SLOT(readresult()));
     //show reauthenticate button when authenticate fail
     connect(backend,SIGNAL(finished(int)),this,SLOT(changeButton(int)));
+    exitMTH = new QProcess(this);
 
 }
 
@@ -164,8 +166,16 @@ void AuthMsgWindow::displayWD()
 void AuthMsgWindow::readresult()
 {
     QTextCodec *data = QTextCodec::codecForName("UTF-8");
-    QString result = data->toUnicode(backend->readAllStandardOutput());
-    
+    QString result = data->toUnicode(backend->readAllStandardOutput()); 
+    authMsg->append(result.trimmed()); //delete the whitespace from the start and the end
+    if(this->isHidden()&&trayMsg)showMessage();
+
+}
+void AuthMsgWindow::readresultend()
+{
+    QTextCodec *data = QTextCodec::codecForName("UTF-8");
+    QString result = data->toUnicode(exitMTH->readAllStandardOutput());
+    std::cout << qPrintable(result);
     authMsg->append(result.trimmed()); //delete the whitespace from the start and the end
     if(this->isHidden()&&trayMsg)showMessage();
 
@@ -183,9 +193,11 @@ void AuthMsgWindow::setArgs(const QString &id, const QString &pd)
 
 void AuthMsgWindow::exitClicked()
 {
-    backend->kill();
-    backend->start(*backendName,QStringList()<<"-k");
-    if(backend->waitForFinished(-1))close();
+    exitMTH->start(*backendName,QStringList()<<"-k");
+    exitMTH->setProcessChannelMode(QProcess::MergedChannels);
+    connect(exitMTH, SIGNAL(readyReadStandardOutput()), this, SLOT(readresultend()));
+
+    if(exitMTH->waitForFinished(-1)&&backend->waitForFinished(-1))close();
 }
 
 void AuthMsgWindow::miniClicked()
@@ -290,3 +302,4 @@ void AuthMsgWindow::paintEvent(QPaintEvent *event)
     }
 }
 //#endif
+

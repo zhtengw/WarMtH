@@ -48,6 +48,7 @@ protected:
 //#endif
 private slots:
     void readresult();
+    void readresultend();
     void exitClicked();
     void miniClicked();
     void trayIconAct(QSystemTrayIcon::ActivationReason reason);
@@ -77,7 +78,7 @@ private:
     QAction *quitAction;
     bool    trayMsg;
     bool    transparent;
-    //QProcess *exitMTH;
+    QProcess *exitMTH;
 };
 
 #endif // AUTHMSGWINDOW_H
