@@ -48,7 +48,6 @@ protected:
 //#endif
 private slots:
     void readresult();
-    void readresultend();
     void exitClicked();
     void miniClicked();
     void trayIconAct(QSystemTrayIcon::ActivationReason reason);

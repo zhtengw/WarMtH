@@ -1,5 +1,5 @@
 Name:           warmth
-Version:        1.2
+Version:        1.2.1
 Release:        1%{?dist}
 Summary:        A Ruijie and Cernet supplicant
 Summary(zh_CN.UTF-8): 锐捷和塞尔认证

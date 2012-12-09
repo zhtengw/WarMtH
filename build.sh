@@ -35,7 +35,7 @@
 
 PKGNAM=warmth
 #VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
-VERSION=${VERSION:-1.2}
+VERSION=${VERSION:-1.2.1}
 BUILD=${BUILD:-2}
 NUMJOBS=${NUMJOBS:" -j4 "}
 TAG=${TAG:-_aten}
