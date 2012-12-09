@@ -21,12 +21,16 @@
 #include <QLibraryInfo>
 #include <QSharedMemory>
 #include <QDebug>
+#include <iostream>
+#include <string>
 
 #include "mainwindow.h"
 #include "l10n.h"
 #include "qtsingleapplication/qtsingleapplication.h"
-
-int main(int argc, char *argv[])
+extern "C"{
+#include "core/mentohust.h"
+}
+int main(int argc, char **argv)
 {
   /* usr shared memory to implement single instance
    
@@ -57,7 +61,29 @@ int main(int argc, char *argv[])
     */
   
     QtSingleApplication app("warmth_1",argc, argv);
-  
+    std::cout << "Number of arguments:" << argc << "\n";
+    std::cout << *argv[0] << "\n";
+    char *str,c;
+    int i,num;
+    bool nogui = false;
+    str = argv[1];
+    std::cout << "First arg:" << str << "\n";
+    for (i=1; i<argc; i++)
+    {
+      str = argv[i];
+      if (str[0]!='-' && str[0]!='/')
+	std::cout << "wrong arg!";
+      if (strcmp(str, "--no-gui")==0)
+      {
+	nogui = true;
+	num = i;
+      }
+    }
+    for (i=num; i<argc; i++)
+    {
+      argv[i] = argv [i+1];
+    }
+    argv[argc-1]='\0';
     if (app.sendMessage("raise_running_window"))
     {
       
@@ -83,11 +109,13 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("WarMtH");
     QCoreApplication::setApplicationName("warmth");
     
-    
-    MainWindow *mainWD = new MainWindow;
-    app.setActivationWindow(mainWD,true);
-    
-    mainWD->show();
-
+    if(nogui)
+    {
+        MainWindow *mainWD = new MainWindow;
+	app.setActivationWindow(mainWD,true);
+	mainWD->show();
+    }
+    else
+      mentohust(argc, argv);
     return app.exec();
 }
