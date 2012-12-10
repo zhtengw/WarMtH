@@ -1,6 +1,8 @@
 [Desktop Entry]
 Version=1.0
 Name=WarMtH
+GenericName=Ruijie Authentication in Linux
+GenericName[zh_CN]=Linux锐捷认证
 Exec=warmth
 Terminal=false
 Type=Application
