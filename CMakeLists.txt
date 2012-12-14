@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.4)
 project(warmth C CXX)
 SET(CMAKE_C_COMPILER	g++)
+set(CMAKE_LINKER /usr/bin/g++)
 find_package(Qt4 REQUIRED)
 
 

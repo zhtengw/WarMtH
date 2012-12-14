@@ -13,6 +13,7 @@ extern "C"{
 #include "dlfunc.h"
 #include "i18n.h"
 
+/*
 #ifndef NO_DYLOAD
 #include <dlfcn.h>
 
@@ -75,6 +76,7 @@ void free_libpcap(void) {
 
 #endif	/* NO_DYLOAD */
 
+/*
 #ifndef NO_NOTIFY
 #include <dlfcn.h>
 #include <unistd.h>
@@ -158,4 +160,5 @@ int show_notify(const char *summary, char *body, int timeout) {
 }
 
 #endif	/* NO_NOTIFY */
+
 }

@@ -29,6 +29,7 @@
 #include "qtsingleapplication/qtsingleapplication.h"
 extern "C"{
 #include "core/mentohust.h"
+extern void mentohust(int argc, char **argv);
 }
 int main(int argc, char **argv)
 {

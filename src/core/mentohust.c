@@ -7,7 +7,7 @@
 * 作	者：HustMoon@BYHH
 * 邮	箱：www.ehust@gmail.com
 */
-
+extern "C"{
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -255,4 +255,5 @@ static void showCernetMsg(const u_char *buf)
 #endif*/
 		free(serverMsg);
 	}
+}
 }
