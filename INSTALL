@@ -13,7 +13,10 @@ warmth中已附带打过补丁的mentohust，安装前请先删除本机的mento
 可直接dpkg -i安装。
 
 3. RPM系发行版
-   利用warmth.spec进行编译打包，步骤会有点多。
+   可运行build.sh，会自动进行编译打包，rpm安装包创建在~/rpmbuild/RPMS或/usr/src/redhat/RPMS目录下，
+可直接rpm -i安装
+   
+   也可直接利用warmth.spec进行编译打包，步骤会有点多。
    cd ..
    cp -r WarMtH warmth-1.2 && tar cvf warmth-1.2.tar.xz warmth-1.2/
    cp warmth-1.2.tar.xz YOUR/rpmbuilddir/SOURCES

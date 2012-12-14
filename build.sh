@@ -49,7 +49,7 @@ TMP=${TMP:-/tmp/build}
 PKG=$TMP/package-$PKGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-
+function compile_pkg(){
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -147,6 +147,8 @@ find $PKG/usr/doc -type f -exec chmod 644 {} \;
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
   
+}
+
 function  buildSlackpkg(){
 # Add a package description:
 declare -i length=$(echo $PKGNAM | wc -m)-1
@@ -192,13 +194,29 @@ dpkg-deb -b $PKG $OUTPUT/${PKGNAM}_${VERSION}-${BUILD}_${ARCH}.deb 2>&1 | tee $O
 
 }
 
+function buildrpm(){
+cd $CWD/..
+tar Jcvf ~/rpmbuild/SOURCES/$PKGNAM-$VERSION.tar.xz --transform="s|WarMtH|$PKGNAM-$VERSION|" WarMtH/
+cd $CWD
+rpmbuild -ba --nodeps warmth.spec
+}
+
 if [ -x /sbin/makepkg ]; then
+  echo "Building Slackware .tgz package..."
+  compile_pkg
   buildSlackpkg
-elif [ -x /usr/bin/dpkg-deb ]; then
-  builddeb
-else
-  echo "Only Slackware package and deb package support"
-  echo "Please change directory to $PKG and package by your self"
-  echo "Or just run $PKG/usr/bin/warmth"
 fi
+if [ -x /usr/bin/dpkg-deb ]; then
+  echo "Building .deb package..."
+  compile_pkg
+  builddeb
+fi
+if [ -x /usr/bin/rpmbuild ]; then
+  echo "Building rpm package..."
+  buildrpm
+fi
+#  echo "Only Slackware package and deb package support"
+#  echo "Please change directory to $PKG and package by your self"
+#  echo "Or just run $PKG/usr/bin/warmth"
+#fi
 
