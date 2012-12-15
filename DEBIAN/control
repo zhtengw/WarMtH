@@ -2,13 +2,13 @@ Source: warmth
 Section: net
 Priority: optional
 Maintainer: Aten Zhang <atenzd@gmail.com>
-Build-Depends: debhelper (>= 7), autotools-dev, qt-sdk, autopoint, autoconf, gettext
+Build-Depends: debhelper (>= 7), autotools-dev, libqt4-dev, autopoint, autoconf, gettext
 Standards-Version: 1.0
 Homepage: http://code.google.com/p/warmth/
 Package: warmth
-Version: 1.2-2
+Version: 1.2.1-2
 Architecture: all
-Depends: libpcap0.8 | libpcap0.9 | libpcap1.0 | libpcap1, libqt4-dev, libqtgui4
+Depends: libpcap0.8 | libpcap0.9 | libpcap, libqtcore4, libqtgui4
 Description: WarMtH (a GUI front end of MentoHUST)
  WarMtH works around MentoHUST.
  MentoHUST is a third-party client using Ruijie authentication. 
