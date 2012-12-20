@@ -29,7 +29,7 @@
 #include "qtsingleapplication/qtsingleapplication.h"
 extern "C"{
 #include "core/mentohust.h"
-extern void mentohust(int argc, char **argv);
+//extern void mentohust(int argc, char **argv);
 }
 int main(int argc, char **argv)
 {
@@ -63,17 +63,17 @@ int main(int argc, char **argv)
   
     QtSingleApplication app("warmth_1",argc, argv);
     std::cout << "Number of arguments:" << argc << "\n";
-    std::cout << *argv[0] << "\n";
-    char *str,c;
+    char *str;
     int i,num;
     bool nogui = false;
-    str = argv[1];
-    std::cout << "First arg:" << str << "\n";
+    //str = argv[1];
+    //std::cout << "First arg:" << str << "\n";
+    if (argc > 1){
     for (i=1; i<argc; i++)
     {
       str = argv[i];
       if (str[0]!='-' && str[0]!='/')
-	std::cout << "wrong arg!";
+	std::cout << "wrong arg!" <<"\n";
       if (strcmp(str, "--no-gui")==0)
       {
 	nogui = true;
@@ -85,6 +85,9 @@ int main(int argc, char **argv)
       argv[i] = argv [i+1];
     }
     argv[argc-1]='\0';
+    str=argv[1];
+      std::cout << str << "\n";
+    }
     if (app.sendMessage("raise_running_window"))
     {
       
@@ -110,13 +113,15 @@ int main(int argc, char **argv)
     QCoreApplication::setOrganizationName("WarMtH");
     QCoreApplication::setApplicationName("warmth");
     
-    if(nogui)
+    if(!nogui)
     {
         MainWindow *mainWD = new MainWindow;
 	app.setActivationWindow(mainWD,true);
 	mainWD->show();
     }
     else
-      mentohust(argc, argv);
+    {
+      mentohust(argc-1, argv);
+    }
     return app.exec();
 }

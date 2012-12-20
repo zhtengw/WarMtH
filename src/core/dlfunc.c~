@@ -8,7 +8,7 @@
 * 邮	箱：www.ehust@gmail.com
 * 日	期：2009.11.11
 */
-extern "C"{
+// extern "C"{
 
 #include "dlfunc.h"
 #include "i18n.h"
@@ -161,4 +161,4 @@ int show_notify(const char *summary, char *body, int timeout) {
 
 #endif	/* NO_NOTIFY */
 
-}
+// }
