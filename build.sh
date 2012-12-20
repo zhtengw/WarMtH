@@ -134,6 +134,7 @@ cd ../
     -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=/usr/lib${LIBDIRSUFFIX} \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     && make  \
 && make install DESTDIR=$PKG )
