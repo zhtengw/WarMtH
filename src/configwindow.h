@@ -46,14 +46,9 @@ private slots:
     void confirmClicked();
     void showNetCards();
     void saveNetCard(const QString name);
-    void saveMulAdr(const int index);
+    void saveAuthType(const int index);
     void saveDispNotif(const QString time);
     void saveDhcpType(const int index);
-    void saveAuthTimeOut(const QString time);
-    void saveMaxFailTimes(const QString times);
-    void saveWaitFailTimeOut(const QString time);
-    void saveHeartbeatTimeOut(const QString time);
-    void saveClientVersion(const QString version);
     void saveTrayMsg();
     void saveTransAuthWD();
 
@@ -74,10 +69,10 @@ private:
     QStringList *netCardArg;
     QString *CVNetCard;         // save current of net card
 
-    QLabel *mulCastAdrName;
-    QComboBox *mulCastAdr;
-    QStringList *mulCastAdrArg;
-    int CVMulAdr;               // save current combobox index of mulcast address
+    QLabel *authTypeName;
+    QComboBox *authType;
+    QStringList *authTypeArg;
+    int CVAuthType;               // save current combobox index of authentication type
 
     QLabel *dispNotif;
     QLineEdit *dispNotifTime;
@@ -88,31 +83,6 @@ private:
     QComboBox *dhcpType;
     QStringList *dhcpTypeArg;
     int CVDhcpType;             // save current combobox index of DHCP type
-
-    QLabel *authTimeOutName;
-    QLineEdit *authTimeOut;
-    QStringList *authTimeOutArg;
-    QString *CVAuthTO;          // save current value of authenticate timeout
-
-    QLabel *maxFailTimesName;
-    QLineEdit *maxFailTimes;
-    QStringList *maxFailTimesArg;
-    QString *CVMaxFT;           // save current value of max failure times
-
-    QLabel *waitFailTimeOutName;
-    QLineEdit *waitFailTimeOut;
-    QStringList *waitFailTimeOutArg;
-    QString *CVWaitFTO;         // save current value of waiting on failure timeout
-
-    QLabel *heartbeatTimeOutName;
-    QLineEdit *heartbeatTimeOut;
-    QStringList *heartbeatTimeOutArg;
-    QString *CVHeatBTO;         // save current value of heartbeat timeout
-
-    QLabel *clientVersionName;
-    QLineEdit *clientVersion;
-    QStringList *clientVersionArg;
-    QString *CVClientVer;       // save current value of imitated client version
 
     QCheckBox *autoTrayMsg;
     int CVTrayMsg;              // save current state of the checkbox

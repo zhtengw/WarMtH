@@ -78,24 +78,24 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     connect(netCardSelect,SIGNAL(currentIndexChanged(QString)), this, SLOT(saveNetCard(QString)));
 
 
-    /* 3. Mulcast address selection */
-    //CVMulAdr=0;
-    mulCastAdrName = new QLabel(_("Mulcast Address:"));
-    mulCastAdrName->setToolTip(_("Mulcast Address"));
-    mulCastAdr = new QComboBox;
-    mulCastAdrArg = new QStringList;
-    //the index for Mulcast Address is: 0. standard 1. ruijie 2. saier
-    mulCastAdr->insertItems( 0,QStringList()<<_("standard")<<_("ruijie")<< _("saier"));
+    /* 3. Authentication type selection */
+    //CVAuthType=1;
+    authTypeName = new QLabel(_("Auth. Type:"));
+    authTypeName->setToolTip(_("Authentication type"));
+    authType = new QComboBox;
+    authTypeArg = new QStringList;
+    //the index for Authentication Type is: 0. wireless 1. wired
+    authType->insertItems( 0,QStringList()<<_("wireless")<<_("wired"));
 
-    QHBoxLayout *mulCastLayout = new QHBoxLayout;
-    mulCastLayout->addWidget(mulCastAdrName);
-    mulCastLayout->addWidget(mulCastAdr);
+    QHBoxLayout *authTypeLayout = new QHBoxLayout;
+    authTypeLayout->addWidget(authTypeName);
+    authTypeLayout->addWidget(authType);
 
-    //set default mulcast read from setting file, if no value read, set 0(standard)
-    mulCastAdr->setCurrentIndex(setting.value("mulcastaddress",0).toInt());
-    *mulCastAdrArg=QStringList()<<"-a"<<setting.value("mulcastaddress",0).toString();
-    CVMulAdr = setting.value("mulcastaddress",0).toInt();
-    connect(mulCastAdr,SIGNAL(currentIndexChanged(int)), this, SLOT(saveMulAdr(int)));
+    //set default mulcast read from setting file, if no value read, set 1(wired)
+    authType->setCurrentIndex(setting.value("authtype",1).toInt());
+    *authTypeArg=QStringList()<<"-a"<<setting.value("authtype",1).toString();
+    CVAuthType = setting.value("authtype",1).toInt();
+    connect(authType,SIGNAL(currentIndexChanged(int)), this, SLOT(saveAuthType(int)));
 
     /* 5. DHCP type */
     //CVDhcpType=0;
@@ -103,8 +103,8 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     dhcpTypeName->setToolTip(_("Set the type of DHCP"));
     dhcpType = new QComboBox;
     dhcpTypeArg = new QStringList;
-    //the index for DHCP type is: 0(not in used) 1(secondary authenticate) 2(post authenticate) 3(pre authenticate)
-    dhcpType->insertItems( 0,QStringList()<<_("not in used")<<_("secondary authenticate")<< _("post authenticate")<<_("pre authenticate"));
+    //the index for DHCP type is: 0(not in used) 1(in used)
+    dhcpType->insertItems( 0,QStringList()<<_("not in used")<<_("in used"));
 
     QHBoxLayout *dhcpTypeLayout = new QHBoxLayout;
     dhcpTypeLayout->addWidget(dhcpTypeName);
@@ -115,122 +115,6 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     *dhcpTypeArg=QStringList()<<"-d"<<setting.value("dhcptype",0).toString();
     CVDhcpType = setting.value("dhcptype",0).toInt();
     connect(dhcpType,SIGNAL(currentIndexChanged(int)), this, SLOT(saveDhcpType(int)));
-
-    /* 6. authenticate timeout */
-    CVAuthTO = new QString;
-    authTimeOutName= new QLabel(_("Authenticate timeout:"));
-    authTimeOutName->setToolTip(_("Seconds to wait for authentication"));
-    authTimeOut = new QLineEdit;
-    authTimeOutArg = new QStringList;
-    QLabel *unitTO = new QLabel(_("s"));
-
-    //line edit width
-    authTimeOut->setMaximumWidth(40);
-    //set default value
-    authTimeOut->setText(setting.value("authtimeout",8).toString());
-    *authTimeOutArg = QStringList()<<"-t"<<setting.value("authtimeout",8).toString();
-    *CVAuthTO = setting.value("authtimeout",8).toString();
-
-    //set layout
-    QHBoxLayout *authTimeOutLayout = new QHBoxLayout;
-    authTimeOutLayout->addWidget(authTimeOutName);
-    authTimeOutLayout->addStretch();
-    authTimeOutLayout->addWidget(authTimeOut);
-    authTimeOutLayout->addWidget(unitTO);
-
-    connect(authTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveAuthTimeOut(QString)));
-
-    /* 7. max failure times */
-    CVMaxFT = new QString;
-    maxFailTimesName= new QLabel(_("Max failure times:"));
-    maxFailTimesName->setToolTip(_("Times limit for failure[0 means no limit]"));
-    maxFailTimes = new QLineEdit;
-    maxFailTimesArg = new QStringList;
-
-    //line edit width
-    maxFailTimes->setMaximumWidth(57);
-    //set default value
-    maxFailTimes->setText(setting.value("maxfailtimes",8).toString());
-    *maxFailTimesArg = QStringList()<<"-l"<<setting.value("maxfailtimes",8).toString();
-    *CVMaxFT = setting.value("maxfailtimes",8).toString();
-    connect(maxFailTimes,SIGNAL(textChanged(QString)), this, SLOT(saveMaxFailTimes(QString)));
-
-    //set layout
-    QHBoxLayout *maxFailTimesLayout = new QHBoxLayout;
-    maxFailTimesLayout->addWidget(maxFailTimesName);
-    maxFailTimesLayout->addStretch();
-    maxFailTimesLayout->addWidget(maxFailTimes);
-
-    /* 8. wait on failure timeout */
-    CVWaitFTO = new QString;
-    waitFailTimeOutName= new QLabel(_("Wait on failure timeout:"));
-    waitFailTimeOutName->setToolTip(_("Seconds to wait on failure"));
-    waitFailTimeOut = new QLineEdit;
-    waitFailTimeOutArg = new QStringList;
-    QLabel *unitFTO = new QLabel(_("s"),this);
-
-    //line edit width
-    waitFailTimeOut->setMaximumWidth(40);
-    //set default value
-    waitFailTimeOut->setText(setting.value("failtimeout",15).toString());
-    *waitFailTimeOutArg = QStringList()<<"-r"<<setting.value("failtimeout",15).toString();
-    *CVWaitFTO = setting.value("failtimeout",15).toString();
-
-    //set layout
-    QHBoxLayout *waitFailTimeOutLayout = new QHBoxLayout;
-    waitFailTimeOutLayout->addWidget(waitFailTimeOutName);
-    waitFailTimeOutLayout->addStretch();
-    waitFailTimeOutLayout->addWidget(waitFailTimeOut);
-    waitFailTimeOutLayout->addWidget(unitFTO);
-
-    connect(waitFailTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveWaitFailTimeOut(QString)));
-
-    /* 9. heartbeat timeout */
-    CVHeatBTO = new QString;
-    heartbeatTimeOutName= new QLabel(_("Heartbeat timeout:"));
-    heartbeatTimeOutName->setToolTip(_("Interval between sending two heartbeat packages"));
-    heartbeatTimeOut = new QLineEdit;
-    heartbeatTimeOutArg = new QStringList;
-    QLabel *unitHTO = new QLabel(_("s"),this);
-
-    //line edit width
-    heartbeatTimeOut->setMaximumWidth(40);
-    //set default value
-    heartbeatTimeOut->setText(setting.value("heartbeattimeout",30).toString());
-    *heartbeatTimeOutArg = QStringList()<<"-e"<<setting.value("heartbeattimeout",30).toString();
-    *CVHeatBTO = setting.value("heartbeattimeout",30).toString();
-
-    //set layout
-    QHBoxLayout *heartbeatTimeOutLayout = new QHBoxLayout;
-    heartbeatTimeOutLayout->addWidget(heartbeatTimeOutName);
-    heartbeatTimeOutLayout->addStretch();
-    heartbeatTimeOutLayout->addWidget(heartbeatTimeOut);
-    heartbeatTimeOutLayout->addWidget(unitHTO);
-
-    connect(heartbeatTimeOut,SIGNAL(textChanged(QString)), this, SLOT(saveHeartbeatTimeOut(QString)));
-
-    /* 10. imitated client version */
-    CVClientVer= new QString;
-    clientVersionName= new QLabel(_("Client Version:"));
-    clientVersionName->setToolTip(_("The version of authentification client to imitate[default to 0.00, compatible with xrgsu]"));
-    clientVersion = new QLineEdit;
-    clientVersionArg = new QStringList;
-
-    //line edit width
-    clientVersion->setMaxLength(4);
-    clientVersion->setMaximumWidth(57);
-    //set default value
-    clientVersion->setText(setting.value("clientversion","0.00").toString());
-    *clientVersionArg = QStringList()<<"-v"<<setting.value("clientversion","0.00").toString();
-    *CVClientVer = setting.value("clientversion","0.00").toString();
-
-    //set layout
-    QHBoxLayout *clientVersionLayout = new QHBoxLayout;
-    clientVersionLayout->addWidget(clientVersionName);
-    clientVersionLayout->addStretch();
-    clientVersionLayout->addWidget(clientVersion);
-
-    connect(clientVersion,SIGNAL(textChanged(QString)), this, SLOT(saveClientVersion(QString)));
 
     //**Widgets on application page**//
     /* 4. time to display notification */
@@ -272,13 +156,8 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     ////** set the whole layout of configure window **////
     QVBoxLayout *argsPageLayout = new QVBoxLayout;
-    argsPageLayout->addLayout(clientVersionLayout);
-    argsPageLayout->addLayout(heartbeatTimeOutLayout);
-    argsPageLayout->addLayout(waitFailTimeOutLayout);
-    argsPageLayout->addLayout(maxFailTimesLayout);
-    argsPageLayout->addLayout(authTimeOutLayout);
     argsPageLayout->addLayout(dhcpTypeLayout);
-    argsPageLayout->addLayout(mulCastLayout);
+    argsPageLayout->addLayout(authTypeLayout);
     argsPageLayout->addLayout(netCardLayout);
     argsPage->setLayout(argsPageLayout);
 
@@ -300,7 +179,6 @@ ConfigWindow::ConfigWindow(QWidget *parent)
 
     args=new QStringList;
 
-
 }
 
 ConfigWindow::~ConfigWindow()
@@ -310,20 +188,10 @@ ConfigWindow::~ConfigWindow()
 
     delete netCardArg;
     delete CVNetCard;
-    delete mulCastAdrArg;
+    delete authTypeArg;
     delete dispNotifArg;
     delete CVDispNotif;
     delete dhcpTypeArg;
-    delete authTimeOutArg;
-    delete CVAuthTO;
-    delete maxFailTimesArg;
-    delete CVMaxFT;
-    delete waitFailTimeOutArg;
-    delete CVWaitFTO;
-    delete heartbeatTimeOutArg;
-    delete CVHeatBTO;
-    delete clientVersionArg;
-    delete CVClientVer;
 
     //when the configTabs deleted, the widgets included in it will be deleted too.
     //so I don't need to delete them
@@ -350,29 +218,14 @@ void ConfigWindow::confirmClicked()
     CVNetCard->isEmpty()?*netCardArg=QStringList():*netCardArg = QStringList()<<"-n"<<*CVNetCard;
     setting.setValue("netcard",*CVNetCard);
 
-    *mulCastAdrArg = QStringList()<<"-a"<<QString::number(CVMulAdr);
-    setting.setValue("mulcastaddress",CVMulAdr);
+    *authTypeArg = QStringList()<<"-a"<<QString::number(CVAuthType);
+    setting.setValue("authtype",CVAuthType);
 
     *dispNotifArg=QStringList()<<"-y"<<*CVDispNotif;
     setting.setValue("displaynotification",CVDispNotif->toInt());
 
     *dhcpTypeArg = QStringList()<<"-d"<<QString::number(CVDhcpType);
     setting.setValue("dhcptype",CVDhcpType);
-
-    *authTimeOutArg=QStringList()<<"-t"<<*CVAuthTO;
-    setting.setValue("authtimeout",CVAuthTO->toInt());
-
-    *maxFailTimesArg=QStringList()<<"-l"<<*CVMaxFT;
-    setting.setValue("maxfailtimes",CVMaxFT->toInt());
-
-    *waitFailTimeOutArg=QStringList()<<"-r"<<*CVWaitFTO;
-    setting.setValue("failtimeout",CVWaitFTO->toInt());
-
-    *heartbeatTimeOutArg=QStringList()<<"-e"<<*CVHeatBTO;
-    setting.setValue("heartbeattimeout",CVHeatBTO->toInt());
-
-    *clientVersionArg=QStringList()<<"-v"<<*CVClientVer;
-    setting.setValue("clientversion",*CVClientVer);
 
     setting.setValue("traymsg",CVTrayMsg);
 
@@ -391,9 +244,9 @@ void ConfigWindow::saveNetCard(const QString name)
     *CVNetCard = name;
 }
 
-void ConfigWindow::saveMulAdr(const int index)
+void ConfigWindow::saveAuthType(const int index)
 {
-    CVMulAdr = index;
+    CVAuthType = index;
 }
 
 void ConfigWindow::saveDhcpType(const int index)
@@ -413,31 +266,6 @@ void ConfigWindow::saveDispNotif(const QString time)
     }
 }
 
-void ConfigWindow::saveAuthTimeOut(const QString time)
-{
-    *CVAuthTO = time;
-}
-
-void ConfigWindow::saveMaxFailTimes(const QString times)
-{
-    *CVMaxFT = times;
-}
-
-void ConfigWindow::saveWaitFailTimeOut(const QString time)
-{
-    *CVWaitFTO = time;
-}
-
-void ConfigWindow::saveHeartbeatTimeOut(const QString time)
-{
-    *CVHeatBTO = time;
-}
-
-void ConfigWindow::saveClientVersion(const QString version)
-{
-    *CVClientVer = version;
-}
-
 void ConfigWindow::saveTrayMsg()
 {
     autoTrayMsg->isChecked()?CVTrayMsg=1:CVTrayMsg=0;
@@ -451,12 +279,7 @@ void ConfigWindow::saveTransAuthWD()
 void ConfigWindow::setArgs()
 {
     *args = QStringList()<<netCardArg->join("")
-            <<mulCastAdrArg->join("")
+            <<authTypeArg->join("")
             <<dispNotifArg->join("")
-            <<dhcpTypeArg->join("")
-            <<authTimeOutArg->join("")
-            <<maxFailTimesArg->join("")
-            <<waitFailTimeOutArg->join("")
-            <<heartbeatTimeOutArg->join("")
-            <<clientVersionArg->join("");
+            <<dhcpTypeArg->join("");
 }
