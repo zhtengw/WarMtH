@@ -76,7 +76,6 @@ private:
 
     QLabel *dispNotif;
     QLineEdit *dispNotifTime;
-    QStringList *dispNotifArg;
     QString *CVDispNotif;       // save current value of display notification
 
     QLabel *dhcpTypeName;

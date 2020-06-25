@@ -184,7 +184,7 @@ void AuthMsgWindow::setArgs(const QString &id, const QString &pd)
 
 void AuthMsgWindow::exitClicked()
 {
-    exitMTH->start(*backendName,QStringList()<<"-k");
+    exitMTH->start(*backendName,QStringList()<<"-q");
 
     if(exitMTH->waitForFinished(-1)&&backend->waitForFinished(-1))close();
 }

@@ -147,7 +147,7 @@ void MainWindow::createAuthMW(int result)
     connect(authMW, SIGNAL(finished(int)), this, SLOT(showMe(int)));
     connect(authMW, SIGNAL(finished(int)), this, SLOT(createAuthMW(int)));
 
-    *authMW->backendName=QString("mentohust");
+    *authMW->backendName=QString("rjsupplicant");
 
 
 }

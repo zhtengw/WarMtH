@@ -122,7 +122,6 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     dispNotif = new QLabel(_("System Notification:"));
     dispNotif->setToolTip(_("Seconds to display system notification, letters to no show"));
     dispNotifTime = new QLineEdit;
-    dispNotifArg = new QStringList;
     QLabel *unitdis = new QLabel(_("s [0(no) 1-20(yes)]"));
 
     //line edit width
@@ -130,7 +129,6 @@ ConfigWindow::ConfigWindow(QWidget *parent)
     dispNotifTime->setMaxLength(2);
     //set default value
     dispNotifTime->setText(setting.value("displaynotification",5).toString());
-    *dispNotifArg = QStringList()<<"-y"<<setting.value("displaynotification",5).toString();
     *CVDispNotif = setting.value("displaynotification",5).toString();
 
     //set layout
@@ -189,7 +187,6 @@ ConfigWindow::~ConfigWindow()
     delete netCardArg;
     delete CVNetCard;
     delete authTypeArg;
-    delete dispNotifArg;
     delete CVDispNotif;
     delete dhcpTypeArg;
 
@@ -220,9 +217,6 @@ void ConfigWindow::confirmClicked()
 
     *authTypeArg = QStringList()<<"-a"<<QString::number(CVAuthType);
     setting.setValue("authtype",CVAuthType);
-
-    *dispNotifArg=QStringList()<<"-y"<<*CVDispNotif;
-    setting.setValue("displaynotification",CVDispNotif->toInt());
 
     *dhcpTypeArg = QStringList()<<"-d"<<QString::number(CVDhcpType);
     setting.setValue("dhcptype",CVDhcpType);
@@ -280,6 +274,5 @@ void ConfigWindow::setArgs()
 {
     *args = QStringList()<<netCardArg->join("")
             <<authTypeArg->join("")
-            <<dispNotifArg->join("")
             <<dhcpTypeArg->join("");
 }

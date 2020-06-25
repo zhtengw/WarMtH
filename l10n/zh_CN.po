@@ -7,14 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: warmth 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-12 21:36+0800\n"
-"PO-Revision-Date: 2012-11-12 21:37+0800\n"
+"POT-Creation-Date: 2013-08-08 12:32+0800\n"
+"PO-Revision-Date: 2013-08-08 12:58+0700\n"
 "Last-Translator: Aten Zhang <atenzd@gmail.com>\n"
 "Language-Team: Aten Zhang <atenzd@gmail.com>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: zh_CN\n"
+"X-Source-Language: C\n"
 
 #: ../src/aboutwindow.cpp:30
 msgid "About WarMtH"
@@ -45,45 +48,62 @@ msgid "About &MentoHust"
 msgstr "关于 &MentoHust"
 
 #: ../src/aboutwindow.cpp:84
-msgid "<p><big><b>MentoHust</b></big> Version 0.3.1</p><p>&nbsp;&nbsp;a ruijie authentication client</p><p><b>Authors: </b></p><p><address>&nbsp;&nbsp;HustMoon</address> &lt;mentohust@ehust.co.cc&gt;</p><p><address>&nbsp;&nbsp;kkHAIKE</address> &lt;kkHAIKE@gmail.com&gt;</p>"
-msgstr "<p><big><b>MentoHust</b></big> 版本 0.3.1</p><p>&nbsp;&nbsp;锐捷认证客户端</p><p><b>作者: </b></p><p><address>&nbsp;&nbsp;HustMoon</address> &lt;mentohust@ehust.co.cc&gt;</p><p><address>&nbsp;&nbsp;kkHAIKE</address> &lt;kkHAIKE@gmail.com&gt;</p>"
+msgid ""
+"<p><big><b>MentoHust</b></big> Version 0.3.1</p><p>&nbsp;&nbsp;a ruijie "
+"authentication client</p><p><b>Authors: "
+"</b></p><p><address>&nbsp;&nbsp;HustMoon</address> "
+"&lt;mentohust@ehust.co.cc&gt;</p><p><address>&nbsp;&nbsp;kkHAIKE</address> "
+"&lt;kkHAIKE@gmail.com&gt;</p>"
+msgstr ""
+"<p><big><b>MentoHust</b></big> 版本 "
+"0.3.1</p><p>&nbsp;&nbsp;锐捷认证客户端</p><p><b>作者: "
+"</b></p><p><address>&nbsp;&nbsp;HustMoon</address> "
+"&lt;mentohust@ehust.co.cc&gt;</p><p><address>&nbsp;&nbsp;kkHAIKE</address> "
+"&lt;kkHAIKE@gmail.com&gt;</p>"
 
 #: ../src/aboutwindow.cpp:105
-msgid "<p><big>A GUI front end for MentoHust</big></p><p>Copyright &copy; 2012 <address>Aten Zhang</address></p><p>Homepage: </p><p><a href=\"http://code.google.com/p/warmth\">http://code.google.com/p/warmth</a></p><br />License: <p><a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General Public License Version 3</a></p>"
-msgstr "<p><big>MentoHust的图形前端</big></p><p>Copyright &copy; 2012 <address>Aten Zhang</address></p><p>项目主页: </p><p><a href=\"http://code.google.com/p/warmth\"> http://code.google.com/p/warmth </a></p><br />许可协议: <p><a href=\"http://www.gnu.org/licenses/gpl.txt\"> GNU通用公共许可协议第3版 </a></p>"
+msgid ""
+"<p><big>A GUI front end for MentoHust</big></p><p>Copyright &copy; 2012 "
+"<address>Aten Zhang</address></p><p>Homepage: </p><p><a "
+"href=\"http://code.google.com/p/warmth\">http://code.google.com/p/warmth</a></p><br "
+"/>License: <p><a href=\"http://www.gnu.org/licenses/gpl.txt\">GNU General "
+"Public License Version 3</a></p>"
+msgstr ""
+"<p><big>MentoHust的图形前端</big></p><p>Copyright &copy; 2012 <address>Aten "
+"Zhang</address></p><p>项目主页: </p><p><a "
+"href=\"http://code.google.com/p/warmth\"> http://code.google.com/p/warmth "
+"</a></p><br />许可协议: <p><a href=\"http://www.gnu.org/licenses/gpl.txt\"> "
+"GNU通用公共许可协议第3版 </a></p>"
 
-#: ../src/authmsgwindow.cpp:32
-#: ../src/authmsgwindow.cpp:254
+#: ../src/authmsgwindow.cpp:33 ../src/authmsgwindow.cpp:256
 msgid "&Exit"
 msgstr "退出认证(&E)"
 
-#: ../src/authmsgwindow.cpp:33
-#: ../src/authmsgwindow.cpp:250
+#: ../src/authmsgwindow.cpp:34 ../src/authmsgwindow.cpp:252
 msgid "&Minimize"
 msgstr "最小化(&M)"
 
-#: ../src/authmsgwindow.cpp:34
+#: ../src/authmsgwindow.cpp:35
 msgid "Re-&authenticate"
 msgstr "重新认证(&A)"
 
-#: ../src/authmsgwindow.cpp:50
+#: ../src/authmsgwindow.cpp:51
 msgid "Authentication"
 msgstr "认证消息"
 
-#: ../src/authmsgwindow.cpp:52
+#: ../src/authmsgwindow.cpp:53
 msgid "<font size=5><b>Authentication</b></font>"
 msgstr "<font size=5><b>认证消息</b></font>"
 
-#: ../src/authmsgwindow.cpp:245
-#: ../src/mainwindow.cpp:113
+#: ../src/authmsgwindow.cpp:247 ../src/mainwindow.cpp:113
 msgid "WarMtH"
 msgstr "WarMtH"
 
-#: ../src/authmsgwindow.cpp:257
+#: ../src/authmsgwindow.cpp:259
 msgid "&Restore"
 msgstr "恢复窗口(&R)"
 
-#: ../src/authmsgwindow.cpp:261
+#: ../src/authmsgwindow.cpp:263
 msgid "&Quit"
 msgstr "离开(&Q)"
 
@@ -112,24 +132,20 @@ msgid "Select the network card you used"
 msgstr "选择你要使用的网卡"
 
 #: ../src/configwindow.cpp:83
-msgid "Mulcast Address:"
-msgstr "组播地址:"
+msgid "Auth. Type:"
+msgstr "认证类型:"
 
 #: ../src/configwindow.cpp:84
-msgid "Mulcast Address"
-msgstr "组播地址"
+msgid "Authentication type"
+msgstr "认证类型"
 
 #: ../src/configwindow.cpp:88
-msgid "standard"
-msgstr "标准"
+msgid "wireless"
+msgstr "无线"
 
 #: ../src/configwindow.cpp:88
-msgid "ruijie"
-msgstr "锐捷"
-
-#: ../src/configwindow.cpp:88
-msgid "saier"
-msgstr "赛尔"
+msgid "wired"
+msgstr "有线"
 
 #: ../src/configwindow.cpp:102
 msgid "DHCP type:"
@@ -144,92 +160,38 @@ msgid "not in used"
 msgstr "不使用"
 
 #: ../src/configwindow.cpp:107
-msgid "secondary authenticate"
-msgstr "二次认证"
-
-#: ../src/configwindow.cpp:107
-msgid "post authenticate"
-msgstr "认证后"
-
-#: ../src/configwindow.cpp:107
-msgid "pre authenticate"
-msgstr "认证前"
-
-#: ../src/configwindow.cpp:121
-msgid "Authenticate timeout:"
-msgstr "认证超时:"
+msgid "in used"
+msgstr "使用"
 
 #: ../src/configwindow.cpp:122
-msgid "Seconds to wait for authentication"
-msgstr "等待认证完成的时间"
-
-#: ../src/configwindow.cpp:125
-#: ../src/configwindow.cpp:170
-#: ../src/configwindow.cpp:194
-msgid "s"
-msgstr "秒"
-
-#: ../src/configwindow.cpp:145
-msgid "Max failure times:"
-msgstr "允许失败次数:"
-
-#: ../src/configwindow.cpp:146
-msgid "Times limit for failure[0 means no limit]"
-msgstr "失败次数限制[0表示无限制]"
-
-#: ../src/configwindow.cpp:166
-msgid "Wait on failure timeout:"
-msgstr "失败等待:"
-
-#: ../src/configwindow.cpp:167
-msgid "Seconds to wait on failure"
-msgstr "认证失败时等待时间"
-
-#: ../src/configwindow.cpp:190
-msgid "Heartbeat timeout:"
-msgstr "心跳间隔:"
-
-#: ../src/configwindow.cpp:191
-msgid "Interval between sending two heartbeat packages"
-msgstr "每两次发送心跳包之间的时间间隔"
-
-#: ../src/configwindow.cpp:214
-msgid "Client Version:"
-msgstr "客户端版本号:"
-
-#: ../src/configwindow.cpp:215
-msgid "The version of authentification client to imitate[default to 0.00, compatible with xrgsu]"
-msgstr "模拟的客户端版本[默认0.00表示兼容xrgsu]"
-
-#: ../src/configwindow.cpp:238
 msgid "System Notification:"
 msgstr "显示系统通知:"
 
-#: ../src/configwindow.cpp:239
+#: ../src/configwindow.cpp:123
 msgid "Seconds to display system notification, letters to no show"
 msgstr "显示系统通知的时间，字母表示不显示"
 
-#: ../src/configwindow.cpp:242
+#: ../src/configwindow.cpp:125
 msgid "s [0(no) 1-20(yes)]"
 msgstr "秒[0(不显示) 1-20(显示)]"
 
-#: ../src/configwindow.cpp:262
+#: ../src/configwindow.cpp:144
 msgid "Show balloon message on system tray when minimized"
 msgstr "最小化时在系统托盘显示气泡通知"
 
-#: ../src/configwindow.cpp:268
+#: ../src/configwindow.cpp:150
 msgid "Enable transparent authentication window"
 msgstr "使用透明认证消息窗口"
 
-#: ../src/configwindow.cpp:298
+#: ../src/configwindow.cpp:175
 msgid "Configuration"
 msgstr "配置"
 
-#: ../src/configwindow.cpp:408
+#: ../src/configwindow.cpp:255
 msgid "Out of Range"
 msgstr "超出范围"
 
-#: ../src/configwindow.cpp:408
+#: ../src/configwindow.cpp:255
 msgid "The second value should be 0-20."
 msgstr "时间值应在0-20范围。"
 
@@ -260,6 +222,65 @@ msgstr "配置(&C)"
 #: ../src/mainwindow.cpp:55
 msgid "Abou&t"
 msgstr "关于(&T)"
+
+#~ msgid "Mulcast Address:"
+#~ msgstr "组播地址:"
+
+#~ msgid "Mulcast Address"
+#~ msgstr "组播地址"
+
+#~ msgid "standard"
+#~ msgstr "标准"
+
+#~ msgid "ruijie"
+#~ msgstr "锐捷"
+
+#~ msgid "saier"
+#~ msgstr "赛尔"
+
+#~ msgid "secondary authenticate"
+#~ msgstr "二次认证"
+
+#~ msgid "post authenticate"
+#~ msgstr "认证后"
+
+#~ msgid "pre authenticate"
+#~ msgstr "认证前"
+
+#~ msgid "Authenticate timeout:"
+#~ msgstr "认证超时:"
+
+#~ msgid "Seconds to wait for authentication"
+#~ msgstr "等待认证完成的时间"
+
+#~ msgid "s"
+#~ msgstr "秒"
+
+#~ msgid "Max failure times:"
+#~ msgstr "允许失败次数:"
+
+#~ msgid "Times limit for failure[0 means no limit]"
+#~ msgstr "失败次数限制[0表示无限制]"
+
+#~ msgid "Wait on failure timeout:"
+#~ msgstr "失败等待:"
+
+#~ msgid "Seconds to wait on failure"
+#~ msgstr "认证失败时等待时间"
+
+#~ msgid "Heartbeat timeout:"
+#~ msgstr "心跳间隔:"
+
+#~ msgid "Interval between sending two heartbeat packages"
+#~ msgstr "每两次发送心跳包之间的时间间隔"
+
+#~ msgid "Client Version:"
+#~ msgstr "客户端版本号:"
+
+#~ msgid ""
+#~ "The version of authentification client to imitate[default to 0.00, "
+#~ "compatible with xrgsu]"
+#~ msgstr "模拟的客户端版本[默认0.00表示兼容xrgsu]"
 
 #~ msgid "&Authenticate"
 #~ msgstr "认证(&A)"
